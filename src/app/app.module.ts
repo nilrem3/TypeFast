@@ -15,6 +15,8 @@ import { PopperDirective } from './directives/popper.directive';
 import { IncorrectWordComponent } from './components/incorrect-word/incorrect-word.component';
 import { AboutComponent } from './components/about/about.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { PretestquestionsComponent } from './pretestquestions/pretestquestions.component';
+import { PosttestquestionsComponent } from './posttestquestions/posttestquestions.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     PopperDirective,
     IncorrectWordComponent,
     AboutComponent,
+    PretestquestionsComponent,
+    PosttestquestionsComponent,
   ],
   imports: [
     BrowserModule,
