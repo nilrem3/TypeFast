@@ -1,5 +1,7 @@
-<div class="title">type fast. alpha</div>
-<app-typer (focusFunctionReady)="onFocusFunctionReady($event)"></app-typer>
+<app-pretestquestions *ngIf="appMode === 'PreTestQuestions'"></app-pretestquestions>
+<app-typer *ngIf="appMode === 'Test'" (focusFunctionReady)="onFocusFunctionReady($event)"></app-typer>
+<app-posttestquestions *ngIf="appMode === 'PostTestQuestions'"></app-posttestquestions>
+
 <app-preferences
   (preferencesToggled)="onPreferencesToggled($event)"
   (aboutClicked)="preferencesAboutClicked()"

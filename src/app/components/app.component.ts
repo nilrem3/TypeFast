@@ -1,5 +1,13 @@
 import { Component } from '@angular/core';
 
+enum AppMode {
+  PreTestQuestions = "PreTestQuestions",
+  Test = "Test",
+  PostTestQuestions = "PostTestQuestions",
+  HandoffPrompt = "HandoffPrompt",
+  ResearcherFileSelect = "ResearcherFileSelect"
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,6 +17,7 @@ export class AppComponent {
   title = 'Type fast.';
 
   showAbout = false;
+  appMode = AppMode.PreTestQuestions;
 
   private typeTestFocusFunction: () => void;
 
