@@ -28,6 +28,8 @@
               "src/android-chrome-192x192",
               "src/site.webmanifest",
               "src/assets",
+              "src/package.json",
+              "src/electron_bootstrap.js",
               { "glob": "CHANGELOG.md", "input": "./", "output": "./" }
             ],
             "styles": ["src/styles.scss"],
