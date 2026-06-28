@@ -1,5 +1,3 @@
-console.log("Hello from Electron!")
-
 const { app, BrowserWindow } = require('electron');
 
 const createWindow = () => {

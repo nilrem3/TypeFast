@@ -30,6 +30,10 @@
               "src/assets",
               "src/package.json",
               "src/electron_bootstrap.js",
+              "src/roboto_mono.css",
+              "src/roboto.css",
+              "src/roboto_mono.ttf",
+              "src/roboto.ttf",
               { "glob": "CHANGELOG.md", "input": "./", "output": "./" }
             ],
             "styles": ["src/styles.scss"],
