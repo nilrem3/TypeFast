@@ -8,142 +8,18 @@ export class LanguageService {
   private static readonly substituteMaps: Record<
     string,
     Record<string, string>
-  > = {
-    [Language.RUSSIAN]: {
-      ё: 'е',
-    },
-    [Language.ARABIC]: {
-      أ: 'ا',
-      إ: 'ا',
-      آ: 'ا',
-      ة: 'ه',
-      ؤ: 'ء',
-      ئ: 'ء',
-      ى: 'ي',
-    },
-    [Language.CATALAN]: {
-      à: 'a',
-      é: 'e',
-      è: 'e',
-      í: 'i',
-      ï: 'i',
-      ò: 'o',
-      ó: 'o',
-      ú: 'u',
-      ü: 'u',
-      ç: 'c',
-    },
-    [Language.FRENCH]: {
-      â: 'a',
-      à: 'a',
-      á: 'a',
-      é: 'e',
-      è: 'e',
-      ë: 'e',
-      ê: 'e',
-      ì: 'i',
-      î: 'i',
-      ï: 'i',
-      ù: 'u',
-      û: 'u',
-      ü: 'u',
-      ç: 'c',
-    },
-    [Language.ROMANIAN]: {
-      â: 'a',
-      ă: 'a',
-      î: 'i',
-      ș: 's',
-      ț: 't',
-    },
-    [Language.DUTCH]: {
-      é: 'e',
-      è: 'e',
-      ë: 'e',
-      ê: 'e',
-      ü: 'u',
-      ç: 'c',
-    },
-    [Language.GERMAN]: {
-      ä: 'a',
-      ö: 'o',
-      ü: 'u',
-      ß: 's',
-    },
-    [Language.SPANISH]: {
-      á: 'a',
-      é: 'e',
-      í: 'i',
-      ó: 'o',
-      ú: 'u',
-      ü: 'u',
-    },
-    [Language.PORTUGUESE]: {
-      á: 'a',
-      â: 'a',
-      ã: 'a',
-      à: 'a',
-      ç: 'c',
-      é: 'e',
-      ê: 'e',
-      è: 'e',
-      í: 'i',
-      ì: 'i',
-      ó: 'o',
-      ô: 'o',
-      õ: 'o',
-      ò: 'o',
-      ú: 'u',
-      ù: 'u'
-    },
-  };
+  > = {};
 
   // Use ISO 639-1 standard for language codes,
   //  see https://www.andiamo.co.uk/resources/iso-language-codes/
   static getLanguageISO(language: Language): string {
     switch (language) {
-      case Language.DUTCH:
-        return 'nl';
-      case Language.CATALAN:
-        return 'ca';
       case Language.ENGLISH_BRITISH:
         return 'en-gb';
       case Language.ENGLISH_AMERICAN:
         return 'en-us';
       case Language.ENGLISH_200:
         return 'en-gb';
-      case Language.ITALIAN:
-        return 'it';
-      case Language.HINDI:
-        return 'in';
-      case Language.HUNGARIAN:
-        return 'hu';
-      case Language.JAPANESE:
-        return 'jp';
-      case Language.KOREAN:
-        return 'kr';
-      case Language.CHINESE:
-        return 'cn';
-      case Language.ROMANIAN:
-        return 'ro';
-      case Language.RUSSIAN:
-        return 'ru';
-      case Language.SPANISH:
-        return 'es';
-      case Language.PORTUGUESE:
-        return 'pt';
-      case Language.FRENCH:
-        return 'fr';
-      case Language.GERMAN:
-        return 'de';
-      case Language.ARABIC:
-        return 'sa';
-      case Language.INDONESIAN:
-        return 'id';
-      case Language.UYGHUR:
-        return 'ug';
-      case Language.PROGRAMMING:
-        return 'dev';
       case Language.CUSTOM:
         return 'custom';
       default:

@@ -14,27 +14,9 @@ export enum Preference {
 
 export enum Language {
   CUSTOM = 'custom',
-  ARABIC = 'arabic',
-  CHINESE = 'chinese',
-  CATALAN = 'catalan',
-  DUTCH = 'dutch',
   ENGLISH_AMERICAN = 'english_american',
   ENGLISH_BRITISH = 'english_british',
   ENGLISH_200 = 'english_200',
-  FRENCH = 'french',
-  GERMAN = 'german',
-  HINDI = 'hindi',
-  HUNGARIAN = 'hungarian',
-  INDONESIAN = 'indonesian',
-  ITALIAN = 'italian',
-  JAPANESE = 'japanese',
-  KOREAN = 'korean',
-  PORTUGUESE = 'portuguese',
-  ROMANIAN = 'romanian',
-  RUSSIAN = 'russian',
-  SPANISH = 'spanish',
-  UYGHUR = 'uyghur',
-  PROGRAMMING = 'programming',
 }
 
 export enum Theme {
