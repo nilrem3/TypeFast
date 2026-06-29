@@ -58,6 +58,11 @@ export class TyperComponent implements OnInit {
 
   preferences: Map<string, BehaviorSubject<any>>;
 
+  initialized_resolver: any;
+  initialized = new Promise((resolve, reject) => {
+    this.initialized_resolver = resolve;
+  });
+
   private leftWordOffset = 0;
   private rightWordOffset = 0;
   private leftCharacterOffset = 0;
@@ -130,6 +135,8 @@ export class TyperComponent implements OnInit {
 
     this.focusFunctionReady.emit(this.focusInput.bind(this));
     this.focusInput();
+
+    this.initialized_resolver()
   }
 
   setupTest(): void {
@@ -279,12 +286,14 @@ export class TyperComponent implements OnInit {
     wordListName: string,
     shouldReverseScroll: boolean
   ): void {
-    this.reverseScrollWordList = shouldReverseScroll;
-    this.wordListName = wordListName;
-    this.wordMode = wordMode;
-    this.language = language;
-    this.syncReverseScroll();
-    this.setupTest();
+    this.initialized.then(() => {
+      this.reverseScrollWordList = shouldReverseScroll;
+      this.wordListName = wordListName;
+      this.wordMode = wordMode;
+      this.language = language;
+      this.syncReverseScroll();
+      this.setupTest();
+    });
   }
 
   startTest(): void {
