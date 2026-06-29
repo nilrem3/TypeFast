@@ -461,33 +461,4 @@ markdown {
       }
     }
   }
-
-  app-about {
-    .about-wrapper {
-      background-color: rgba(0, 0, 0, 0.336);
-    }
-
-    .tab-wrap {
-      background-color: #fff;
-    }
-
-    .tab {
-      &:checked + label {
-        background-color: #fff;
-        &:hover {
-          background-color: #fff;
-        }
-      }
-      + label {
-        color: #333;
-        background-color: #efefef;
-        &:hover {
-          background-color: #f9f9f9;
-        }
-      }
-      &__content {
-        color: rgb(85, 85, 85);
-      }
-    }
-  }
 }

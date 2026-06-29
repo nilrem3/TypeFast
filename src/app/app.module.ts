@@ -13,7 +13,6 @@ import { PreferencesComponent } from './components/preferences/preferences.compo
 import { ThemeService } from './services/theme.service';
 import { PopperDirective } from './directives/popper.directive';
 import { IncorrectWordComponent } from './components/incorrect-word/incorrect-word.component';
-import { AboutComponent } from './components/about/about.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PretestquestionsComponent } from './pretestquestions/pretestquestions.component';
 import { PosttestquestionsComponent } from './posttestquestions/posttestquestions.component';
@@ -28,7 +27,6 @@ import { DatasaveComponent } from './datasave/datasave.component';
     PreferencesComponent,
     PopperDirective,
     IncorrectWordComponent,
-    AboutComponent,
     PretestquestionsComponent,
     PosttestquestionsComponent,
     HandoffpromptComponent,

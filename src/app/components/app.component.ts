@@ -16,7 +16,6 @@ enum AppMode {
 export class AppComponent {
   title = 'Type fast.';
 
-  showAbout = false;
   appMode = AppMode.PreTestQuestions;
 
   private typeTestFocusFunction: () => void;
@@ -31,13 +30,5 @@ export class AppComponent {
     if (focusFunction) {
       this.typeTestFocusFunction = focusFunction;
     }
-  }
-
-  preferencesAboutClicked(): void {
-    this.showAbout = true;
-  }
-
-  closeAbout(): void {
-    this.showAbout = false;
   }
 }

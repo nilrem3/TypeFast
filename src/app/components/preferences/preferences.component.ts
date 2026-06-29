@@ -18,7 +18,6 @@ import { LanguageService } from 'src/app/services/language.service';
 })
 export class PreferencesComponent implements OnInit {
   @Output() preferencesToggled = new EventEmitter<boolean>();
-  @Output() aboutClicked = new EventEmitter<void>();
 
   showPreferences = false;
   Language = Language;
@@ -169,10 +168,6 @@ export class PreferencesComponent implements OnInit {
       Preference.IGNORE_CASING,
       (event.target as HTMLInputElement).checked
     );
-  }
-
-  onClickAbout(): void {
-    this.aboutClicked.emit();
   }
 
   onClickResetPreferences(): void {
