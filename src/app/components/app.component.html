@@ -1,6 +1,8 @@
 <app-pretestquestions *ngIf="appMode === 'PreTestQuestions'"></app-pretestquestions>
 <app-typer *ngIf="appMode === 'Test'" (focusFunctionReady)="onFocusFunctionReady($event)"></app-typer>
 <app-posttestquestions *ngIf="appMode === 'PostTestQuestions'"></app-posttestquestions>
+<app-handoffprompt *ngIf="appMode === 'HandoffPrompt'"></app-handoffprompt>
+<app-datasave *ngIf="appMode === 'ResearcherFileSelect'"></app-datasave>
 
 <app-preferences
   (preferencesToggled)="onPreferencesToggled($event)"

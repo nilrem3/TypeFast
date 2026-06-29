@@ -17,6 +17,8 @@ import { AboutComponent } from './components/about/about.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PretestquestionsComponent } from './pretestquestions/pretestquestions.component';
 import { PosttestquestionsComponent } from './posttestquestions/posttestquestions.component';
+import { HandoffpromptComponent } from './handoffprompt/handoffprompt.component';
+import { DatasaveComponent } from './datasave/datasave.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { PosttestquestionsComponent } from './posttestquestions/posttestquestion
     AboutComponent,
     PretestquestionsComponent,
     PosttestquestionsComponent,
+    HandoffpromptComponent,
+    DatasaveComponent,
   ],
   imports: [
     BrowserModule,
