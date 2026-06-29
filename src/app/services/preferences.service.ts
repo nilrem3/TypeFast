@@ -67,8 +67,7 @@ export class PreferencesService {
         const preferenceValue = preferences[preference];
 
         if (
-          this.validatePreferenceType(preferenceKey, preferenceValue) &&
-          !this.isTemporaryPreference(preferenceKey, preferenceValue)
+          this.validatePreferenceType(preferenceKey, preferenceValue)
         )
           this.preferencesSubjects.get(preference)?.next(preferenceValue);
       }
@@ -88,10 +87,6 @@ export class PreferencesService {
     );
   }
 
-  private isTemporaryPreference(key: string, value: unknown) {
-    return key === Preference.LANGUAGE && value == Language.CUSTOM;
-  }
-
   getPreferences(): Map<string, BehaviorSubject<any>> {
     return new Map(this.preferencesSubjects);
   }
@@ -104,21 +99,19 @@ export class PreferencesService {
   setPreference(key: Preference, value: unknown): void {
     if (!this.validatePreferenceType(key, value)) return;
 
-    if (!this.isTemporaryPreference(key, value)) {
-      // Retrieve preferences object
-      let pref: Preferences;
+    // Retrieve preferences object
+    let pref: Preferences;
 
-      try {
-        pref = JSON.parse(localStorage.getItem('preferences'));
-        if (pref == null || typeof pref === 'undefined') throw null;
-      } catch (e) {
-        pref = {};
-      }
-
-      pref[key as string] = value;
-
-      localStorage.setItem('preferences', JSON.stringify(pref));
+    try {
+      pref = JSON.parse(localStorage.getItem('preferences'));
+      if (pref == null || typeof pref === 'undefined') throw null;
+    } catch (e) {
+      pref = {};
     }
+
+    pref[key as string] = value;
+
+    localStorage.setItem('preferences', JSON.stringify(pref));
 
     this.preferencesSubjects.get(key).next(value);
   }
@@ -144,8 +137,7 @@ export class PreferencesService {
           const newVal = newObj[key];
           if (
             oldObj[key] !== newVal &&
-            this.validatePreferenceType(key, newVal) &&
-            !this.isTemporaryPreference(key, newVal)
+            this.validatePreferenceType(key, newVal)
           ) {
             this.preferencesSubjects.get(key).next(newObj[key]);
           }

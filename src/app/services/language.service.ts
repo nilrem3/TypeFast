@@ -20,8 +20,6 @@ export class LanguageService {
         return 'en-us';
       case Language.ENGLISH_200:
         return 'en-gb';
-      case Language.CUSTOM:
-        return 'custom';
       default:
         return 'unknown';
     }
@@ -35,15 +33,13 @@ export class LanguageService {
         return 'English (US)';
       case Language.ENGLISH_200:
         return 'English (200)';
-      default:
-        return language.charAt(0).toUpperCase() + (language as string).slice(1);
     }
   }
 
   static compareCharacter(
     actual: string,
     expected: string,
-    language: Language = Language.CUSTOM,
+    language: Language,
     ignoreAccents = false
   ): boolean {
     if (!actual || !expected) return false;
@@ -71,7 +67,7 @@ export class LanguageService {
   static compare(
     actual: string,
     expected: string,
-    language: Language = Language.CUSTOM,
+    language: Language,
     ignoreAccents = false
   ): boolean {
     if (typeof actual !== 'string' || typeof expected !== 'string')

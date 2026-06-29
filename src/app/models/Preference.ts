@@ -13,7 +13,6 @@ export enum Preference {
 }
 
 export enum Language {
-  CUSTOM = 'custom',
   ENGLISH_AMERICAN = 'english_american',
   ENGLISH_BRITISH = 'english_british',
   ENGLISH_200 = 'english_200',

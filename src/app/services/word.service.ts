@@ -13,9 +13,6 @@ export class WordService {
     ['This', 'language', "doesn't", 'have', 'any', 'sentences.'],
   ];
 
-  private cachedFileText: string;
-  private cachedFileName: string;
-
   private wordsCopy: string[] = [];
   private sentencesCopy: string[][] = [];
 
@@ -74,19 +71,10 @@ export class WordService {
     );
   }
 
-  loadFile(file: File): Promise<void> {
-    return this.getTextViaFile(file).then((text) => {
-      this.cachedFileText = text;
-      this.cachedFileName = file.name;
-    });
-  }
-
   loadLanguage(language: Language, wordMode: WordMode): Promise<void> {
     const langString = this.getLanguageString(language);
     const getTextPromise =
-      language === Language.CUSTOM
-        ? Promise.resolve(this.cachedFileText)
-        : this.getTextViaUrl(`assets/languages/${language}/${wordMode}.txt`);
+        this.getTextViaUrl(`assets/languages/${language}/${wordMode}.txt`);
 
     const promise = getTextPromise
       .then((text: string) => {
@@ -129,15 +117,8 @@ export class WordService {
     }
   }
 
-  getCachedFileName(): string {
-    return this.cachedFileName;
-  }
-
   getLanguageString(language: Language): string {
-    let langString = LanguageService.getLanguageString(language);
-    if (language === Language.CUSTOM && this.cachedFileName)
-      langString = `'${this.cachedFileName}'`;
-    return langString;
+    return LanguageService.getLanguageString(language);
   }
 
   addWordListListener(
@@ -168,17 +149,6 @@ export class WordService {
     ) => void
   ): void {
     this.languageFetchListeners.push(onLanguageFetch);
-  }
-
-  private getTextViaFile(file: File): Promise<string> {
-    return new Promise((resolve, reject) => {
-      if (file.type !== 'text/plain') reject('File is not a text file');
-      const fr = new FileReader();
-      fr.onload = () => {
-        resolve(fr.result as string);
-      };
-      fr.readAsText(file);
-    });
   }
 
   private getTextViaUrl(url: string): Promise<string> {

@@ -90,11 +90,6 @@ export class PreferencesComponent implements OnInit {
   onLanguageChanged(language: Language): void {
     const setPreference = () =>
       this.preferencesService.setPreference(Preference.LANGUAGE, language);
-    const setCustomLanguageLoading = (file: File) => {
-      this.currentlyLoadingLanguage = Language.CUSTOM;
-      return file;
-    };
-    const loadFile = (file: File) => this.wordService.loadFile(file);
 
     const oldLanguage = this.preferencesService.getPreference(
       Preference.LANGUAGE
@@ -102,22 +97,7 @@ export class PreferencesComponent implements OnInit {
     const languageChanged = oldLanguage !== language;
 
     if (languageChanged) {
-      if (language === Language.CUSTOM && !this.hasCachedFile()) {
-        this.selectFile()
-          .then(setCustomLanguageLoading)
-          .then(loadFile)
-          .then(setPreference);
-      } else {
-        setPreference();
-      }
-    } else {
-      // Language reselected
-      if (language === Language.CUSTOM) {
-        this.selectFile()
-          .then(setCustomLanguageLoading)
-          .then(loadFile)
-          .then(setPreference);
-      }
+      setPreference();
     }
   }
 
@@ -205,13 +185,5 @@ export class PreferencesComponent implements OnInit {
   togglePreferencesGroup(group: string): void {
     this.openedPreferencesGroup =
       this.openedPreferencesGroup === group ? '' : group;
-  }
-
-  getCachedFileName(): string {
-    return this.wordService.getCachedFileName()?.trim();
-  }
-
-  hasCachedFile(): boolean {
-    return !!this.wordService.getCachedFileName()?.trim().length;
   }
 }

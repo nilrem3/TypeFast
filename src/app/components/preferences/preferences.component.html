@@ -220,13 +220,10 @@
             </span>
             <div
               class="label"
-              [class.underline]="lang.value === Language.CUSTOM"
             >
               <!--
               -->{{
-                lang.value === Language.CUSTOM
-                  ? getCachedFileName() || getNameForLanguage(lang.value)
-                  : getNameForLanguage(lang.value)
+                  getNameForLanguage(lang.value)
               }}
             </div>
           </div>
