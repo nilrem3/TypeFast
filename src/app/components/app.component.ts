@@ -34,6 +34,5 @@ export class AppComponent {
 
   onBeginClicked(): void {
     this.appMode = AppMode.Test;
-    console.log("Beginning Test!");
   }
 }
