@@ -31,4 +31,9 @@ export class AppComponent {
       this.typeTestFocusFunction = focusFunction;
     }
   }
+
+  onBeginClicked(): void {
+    this.appMode = AppMode.Test;
+    console.log("Beginning Test!");
+  }
 }

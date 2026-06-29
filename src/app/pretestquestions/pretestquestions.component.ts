@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-pretestquestions',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pretestquestions.component.scss']
 })
 export class PretestquestionsComponent implements OnInit {
+  @Output() beginClicked = new EventEmitter<boolean>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onBeginClicked(): void {
+    this.beginClicked.emit()
   }
 
 }

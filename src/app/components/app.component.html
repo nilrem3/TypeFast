@@ -1,4 +1,7 @@
-<app-pretestquestions *ngIf="appMode === 'PreTestQuestions'"></app-pretestquestions>
+<app-pretestquestions
+*ngIf="appMode === 'PreTestQuestions'"
+(beginClicked)="onBeginClicked()"
+></app-pretestquestions>
 <app-typer *ngIf="appMode === 'Test'" (focusFunctionReady)="onFocusFunctionReady($event)"></app-typer>
 <app-posttestquestions *ngIf="appMode === 'PostTestQuestions'"></app-posttestquestions>
 <app-handoffprompt *ngIf="appMode === 'HandoffPrompt'"></app-handoffprompt>
