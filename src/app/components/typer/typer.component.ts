@@ -45,6 +45,7 @@ export class TyperComponent implements OnInit {
   testTimeLeft: number;
 
   testStarted: boolean;
+  isTestFinished: boolean;
   wordListName = 'Loading ...';
   language: Language;
   reverseScroll = false;
@@ -168,6 +169,7 @@ export class TyperComponent implements OnInit {
     this.inputElement.disabled = false;
 
     this.testStarted = false;
+    this.isTestFinished = false;
     this.syncCurrentWordElement();
     this.rightWordOffset = this.currentWordElement.getBoundingClientRect().width;
     this.syncOffset();
@@ -486,6 +488,7 @@ export class TyperComponent implements OnInit {
   }
 
   onTestFinished(): void {
+    this.isTestFinished = true;
     this.testFinished.emit(this.testResults);
   }
 
