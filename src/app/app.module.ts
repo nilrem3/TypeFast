@@ -18,6 +18,7 @@ import { PretestquestionsComponent } from './pretestquestions/pretestquestions.c
 import { PosttestquestionsComponent } from './posttestquestions/posttestquestions.component';
 import { HandoffpromptComponent } from './handoffprompt/handoffprompt.component';
 import { DatasaveComponent } from './datasave/datasave.component';
+import { DatacollectorService } from './datacollector.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { DatasaveComponent } from './datasave/datasave.component';
     HttpClientModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
   ],
-  providers: [WordService, PreferencesService, ThemeService, LanguageService],
+  providers: [WordService, PreferencesService, ThemeService, LanguageService, DatacollectorService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

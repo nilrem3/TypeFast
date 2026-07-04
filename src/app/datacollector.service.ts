@@ -27,4 +27,13 @@ export class DatacollectorService {
   setPosttestQuestionData(data) {
     this.posttestquestiondata = data;
   }
+
+  getData() {
+    return {
+      "pretest": this.pretestquestiondata,
+      "familiar": this.familiartestdata,
+      "unfamiliar": this.unfamiliartestdata,
+      "posttest": this.posttestquestiondata
+    }
+  }
 }

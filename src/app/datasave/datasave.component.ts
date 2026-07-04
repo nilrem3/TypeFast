@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { DatacollectorService } from '../datacollector.service';
 
 @Component({
   selector: 'app-datasave',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatasaveComponent implements OnInit {
 
-  constructor() { }
+  datacollectionService;
+  data;
+
+  constructor(
+    private dS: DatacollectorService
+  ) {
+    this.datacollectionService = dS;
+    this.data = this.datacollectionService.getData();
+  }
 
   ngOnInit(): void {
+
   }
 
 }

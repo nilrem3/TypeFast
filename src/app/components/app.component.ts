@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DatacollectorService } from '../datacollector.service';
 import { TestResults } from '../models/TestResults';
 
 enum AppMode {
@@ -8,11 +9,6 @@ enum AppMode {
   PostTestQuestions = "PostTestQuestions",
   HandoffPrompt = "HandoffPrompt",
   ResearcherFileSelect = "ResearcherFileSelect"
-}
-
-enum WhichTest {
-  FirstTest = "first",
-  SecondTest = "second"
 }
 
 @Component({
@@ -25,9 +21,15 @@ export class AppComponent {
 
   appMode = AppMode.PreTestQuestions;
 
-  familiarTest = WhichTest.FirstTest;
+  familiarTest = AppMode.Test1; // could also be Test2
+
+  datacollectionService;
 
   private typeTestFocusFunction: () => void;
+
+  constructor(private dS: DatacollectorService) {
+    this.datacollectionService = dS;
+  }
 
   onPreferencesToggled(show: boolean): void {
     if (show === false && this.typeTestFocusFunction) {
@@ -47,6 +49,12 @@ export class AppComponent {
 
   onTestNextPressed(results: TestResults): void {
     // send the results to the savedata
+
+    if (this.appMode == this.familiarTest) {
+      this.datacollectionService.setFamiliarTestData(results);
+    } else {
+      this.datacollectionService.setUnfamiliarTestData(results);
+    }
 
     if (this.appMode == AppMode.Test1) {
       this.appMode = AppMode.Test2;
