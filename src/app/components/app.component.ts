@@ -9,6 +9,11 @@ enum AppMode {
   ResearcherFileSelect = "ResearcherFileSelect"
 }
 
+enum WhichTest {
+  FirstTest = "first",
+  SecondTest = "second"
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,6 +23,9 @@ export class AppComponent {
   title = 'Type fast.';
 
   appMode = AppMode.PreTestQuestions;
+
+  whichTest = WhichTest.FirstTest;
+  familiarTest = WhichTest.FirstTest;
 
   private typeTestFocusFunction: () => void;
 
@@ -40,5 +48,11 @@ export class AppComponent {
   onTestFinished(results: TestResults): void {
     // send the results to the savedata
     console.log("Test Finished!");
+
+    if (this.whichTest == WhichTest.FirstTest) {
+      this.whichTest = WhichTest.SecondTest;
+    } else {
+      this.appMode = AppMode.HandoffPrompt;
+    }
   }
 }
