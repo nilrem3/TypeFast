@@ -52,7 +52,7 @@ export class AppComponent {
     if (this.whichTest == WhichTest.FirstTest) {
       this.whichTest = WhichTest.SecondTest;
     } else {
-      this.appMode = AppMode.HandoffPrompt;
+      this.appMode = AppMode.PostTestQuestions;
     }
   }
 }
