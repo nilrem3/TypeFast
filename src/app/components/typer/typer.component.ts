@@ -26,7 +26,7 @@ import { LanguageService } from 'src/app/services/language.service';
 export class TyperComponent implements OnInit {
   @Output() focusFunctionReady = new EventEmitter<() => void>();
 
-  @Output() testFinished = new EventEmitter();
+  @Output() testNextButtonPressed = new EventEmitter();
 
   words: string[] = ['Loading...'];
 
@@ -45,7 +45,7 @@ export class TyperComponent implements OnInit {
   testTimeLeft: number;
 
   testStarted: boolean;
-  isTestFinished: boolean;
+  testFinished: boolean;
   wordListName = 'Loading ...';
   language: Language;
   reverseScroll = false;
@@ -169,7 +169,7 @@ export class TyperComponent implements OnInit {
     this.inputElement.disabled = false;
 
     this.testStarted = false;
-    this.isTestFinished = false;
+    this.testFinished = false;
     this.syncCurrentWordElement();
     this.rightWordOffset = this.currentWordElement.getBoundingClientRect().width;
     this.syncOffset();
@@ -395,10 +395,6 @@ export class TyperComponent implements OnInit {
 
     this.testResults.timeElapsed = seconds;
     this.calculateStats();
-
-    if (seconds === this.testTime) {
-      this.onTestFinished();
-    }
   }
 
   updateTimer(seconds: number): void {
@@ -485,11 +481,12 @@ export class TyperComponent implements OnInit {
       this.words[this.currentIndex].slice(0, this.wordInput.length),
       false
     );
+
+    this.testFinished = true;
   }
 
   onTestFinished(): void {
-    this.isTestFinished = true;
-    this.testFinished.emit(this.testResults);
+    this.testFinished = true;
   }
 
   private breakPoints = [
@@ -583,9 +580,8 @@ export class TyperComponent implements OnInit {
     this.focusInput();
   }
 
-  onRestartClicked(): void {
-    this.setupTest();
-    this.focusInput();
+  onNextClicked(): void {
+    this.testNextButtonPressed.emit(this.testResults);
   }
 
   onIncorrectWordCountClicked(): void {

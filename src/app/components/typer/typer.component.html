@@ -78,16 +78,16 @@
         </svg>
       </button>
     </div>
-    <div *ngIf="isTestFinished"
+    <div *ngIf="testFinished"
     class="type-test-buttons">
       <button
         type="button"
         class="type-test-restart"
         tabindex="0"
-        (click)="onRestartClicked()"
-        title="Next test"
+        (click)="onNextClicked()"
+        title="Next"
       >
-      <p>Next Test</p>
+      <p>Next</p>
       </button>
     </div>
   </div>

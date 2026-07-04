@@ -4,9 +4,15 @@
 ></app-pretestquestions>
 
 <app-typer
-*ngIf="appMode === 'Test'"
+*ngIf="appMode === 'Test1'"
 (focusFunctionReady)="onFocusFunctionReady($event)"
-(testFinished)="onTestFinished($event)"
+(testNextButtonPressed)="onTestNextPressed($event)"
+></app-typer>
+
+<app-typer
+*ngIf="appMode === 'Test2'"
+(focusFunctionReady)="onFocusFunctionReady($event)"
+(testNextButtonPressed)="onTestNextPressed($event)"
 ></app-typer>
 
 <app-posttestquestions *ngIf="appMode === 'PostTestQuestions'"></app-posttestquestions>

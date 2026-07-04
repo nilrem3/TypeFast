@@ -3,7 +3,8 @@ import { TestResults } from '../models/TestResults';
 
 enum AppMode {
   PreTestQuestions = "PreTestQuestions",
-  Test = "Test",
+  Test1 = "Test1",
+  Test2 = "Test2",
   PostTestQuestions = "PostTestQuestions",
   HandoffPrompt = "HandoffPrompt",
   ResearcherFileSelect = "ResearcherFileSelect"
@@ -24,7 +25,6 @@ export class AppComponent {
 
   appMode = AppMode.PreTestQuestions;
 
-  whichTest = WhichTest.FirstTest;
   familiarTest = WhichTest.FirstTest;
 
   private typeTestFocusFunction: () => void;
@@ -42,15 +42,14 @@ export class AppComponent {
   }
 
   onBeginClicked(): void {
-    this.appMode = AppMode.Test;
+    this.appMode = AppMode.Test1;
   }
 
-  onTestFinished(results: TestResults): void {
+  onTestNextPressed(results: TestResults): void {
     // send the results to the savedata
-    console.log("Test Finished!");
 
-    if (this.whichTest == WhichTest.FirstTest) {
-      this.whichTest = WhichTest.SecondTest;
+    if (this.appMode == AppMode.Test1) {
+      this.appMode = AppMode.Test2;
     } else {
       this.appMode = AppMode.PostTestQuestions;
     }
