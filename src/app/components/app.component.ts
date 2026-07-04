@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TestResults } from '../models/TestResults';
 
 enum AppMode {
   PreTestQuestions = "PreTestQuestions",
@@ -34,5 +35,10 @@ export class AppComponent {
 
   onBeginClicked(): void {
     this.appMode = AppMode.Test;
+  }
+
+  onTestFinished(results: TestResults): void {
+    // send the results to the savedata
+    console.log("Test Finished!");
   }
 }

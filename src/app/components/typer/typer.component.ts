@@ -26,6 +26,8 @@ import { LanguageService } from 'src/app/services/language.service';
 export class TyperComponent implements OnInit {
   @Output() focusFunctionReady = new EventEmitter<() => void>();
 
+  @Output() testFinished = new EventEmitter();
+
   words: string[] = ['Loading...'];
 
   wordInput: string;
@@ -391,6 +393,10 @@ export class TyperComponent implements OnInit {
 
     this.testResults.timeElapsed = seconds;
     this.calculateStats();
+
+    if (seconds === this.testTime) {
+      this.onTestFinished();
+    }
   }
 
   updateTimer(seconds: number): void {
@@ -477,6 +483,10 @@ export class TyperComponent implements OnInit {
       this.words[this.currentIndex].slice(0, this.wordInput.length),
       false
     );
+  }
+
+  onTestFinished(): void {
+    this.testFinished.emit(this.testResults);
   }
 
   private breakPoints = [
