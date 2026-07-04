@@ -4,12 +4,14 @@
 ></app-pretestquestions>
 
 <app-typer
+[familiar]="familiarTest === 'Test1'"
 *ngIf="appMode === 'Test1'"
 (focusFunctionReady)="onFocusFunctionReady($event)"
 (testNextButtonPressed)="onTestNextPressed($event)"
 ></app-typer>
 
 <app-typer
+[familiar]="familiarTest === 'Test2'"
 *ngIf="appMode === 'Test2'"
 (focusFunctionReady)="onFocusFunctionReady($event)"
 (testNextButtonPressed)="onTestNextPressed($event)"

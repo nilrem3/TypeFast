@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Output,
   EventEmitter,
+  Input
 } from '@angular/core';
 import { WordService } from '../../services/word.service';
 import { TestResults, TestResultsStats } from '../../models/TestResults';
@@ -40,6 +41,8 @@ export class TyperComponent implements OnInit {
   dummyInputElement: HTMLElement;
 
   testResults: TestResults;
+
+  @Input() familiar: boolean;
 
   testTime: number;
   testTimeLeft: number;
