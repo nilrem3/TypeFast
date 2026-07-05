@@ -4,7 +4,8 @@ import {
   ChangeDetectorRef,
   Output,
   EventEmitter,
-  Input
+  Input,
+  ViewChild
 } from '@angular/core';
 import { WordService } from '../../services/word.service';
 import { TestResults, TestResultsStats } from '../../models/TestResults';
@@ -28,6 +29,9 @@ export class TyperComponent implements OnInit {
   @Output() focusFunctionReady = new EventEmitter<() => void>();
 
   @Output() testNextButtonPressed = new EventEmitter();
+
+  @ViewChild('familiarAudio') familiarAudio;
+  @ViewChild('unfamiliarAudio') unfamiliarAudio;
 
   words: string[] = ['Loading...'];
 
@@ -307,6 +311,12 @@ export class TyperComponent implements OnInit {
     this.secondTimer = timer(0, 1000).subscribe(this.onSecond.bind(this));
     this.testStarted = true;
     this.testResults.timeElapsed = 0;
+
+    if (this.familiar) {
+      this.familiarAudio.nativeElement.play();
+    } else {
+      this.unfamiliarAudio.nativeElement.play();
+    }
   }
 
   nextWord(): void {
@@ -486,6 +496,11 @@ export class TyperComponent implements OnInit {
     );
 
     this.testFinished = true;
+    if (this.familiar) {
+      this.familiarAudio.nativeElement.pause();
+    } else {
+      this.unfamiliarAudio.nativeElement.pause();
+    }
   }
 
   onTestFinished(): void {
