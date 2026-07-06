@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-posttestquestions',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./posttestquestions.component.scss']
 })
 export class PosttestquestionsComponent implements OnInit {
+  @Output() submitClicked = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSubmitClicked(): void {
+    this.submitClicked.emit();
   }
 
 }

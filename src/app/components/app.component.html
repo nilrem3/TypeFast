@@ -17,7 +17,10 @@
 (testNextButtonPressed)="onTestNextPressed($event)"
 ></app-typer>
 
-<app-posttestquestions *ngIf="appMode === 'PostTestQuestions'"></app-posttestquestions>
+<app-posttestquestions
+*ngIf="appMode === 'PostTestQuestions'"
+(submitClicked)="onSubmitClicked()"
+></app-posttestquestions>
 <app-handoffprompt *ngIf="appMode === 'HandoffPrompt'"></app-handoffprompt>
 <app-datasave *ngIf="appMode === 'ResearcherFileSelect'"></app-datasave>
 

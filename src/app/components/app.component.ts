@@ -47,6 +47,10 @@ export class AppComponent {
     this.appMode = AppMode.Test1;
   }
 
+  onSubmitClicked(): void {
+    this.appMode = AppMode.HandoffPrompt;
+  }
+
   onTestNextPressed(results: TestResults): void {
     // send the results to the savedata
 
