@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-handoffprompt',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HandoffpromptComponent implements OnInit {
 
+  @Output() nextClicked = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onNextClicked(): void {
+    this.nextClicked.emit();
   }
 
 }

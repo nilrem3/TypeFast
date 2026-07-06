@@ -21,7 +21,11 @@
 *ngIf="appMode === 'PostTestQuestions'"
 (submitClicked)="onSubmitClicked()"
 ></app-posttestquestions>
-<app-handoffprompt *ngIf="appMode === 'HandoffPrompt'"></app-handoffprompt>
+<app-handoffprompt
+*ngIf="appMode === 'HandoffPrompt'"
+(nextClicked)="onNextClicked()"
+></app-handoffprompt>
+
 <app-datasave *ngIf="appMode === 'ResearcherFileSelect'"></app-datasave>
 
 <app-preferences

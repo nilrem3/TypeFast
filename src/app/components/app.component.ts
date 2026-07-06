@@ -51,6 +51,10 @@ export class AppComponent {
     this.appMode = AppMode.HandoffPrompt;
   }
 
+  onNextClicked(): void {
+    this.appMode = AppMode.ResearcherFileSelect;
+  }
+
   onTestNextPressed(results: TestResults): void {
     // send the results to the savedata
 
