@@ -1,0 +1,43 @@
+[
+  {
+    "type": "multiple-choice",
+    "text": "Is English one of your native languages?",
+    "data": {
+      "options": [
+        {"text": "Yes"},
+        {"text": "No"}
+      ]
+    }
+  },
+  {
+    "type": "free-response",
+    "text": "What keyboard layout do you usually use to type English? (ex. QWERTY, AZERTY, colemak...)",
+    "data": {}
+  },
+  {
+    "type": "multiple-choice",
+    "text": "Have you ever taken a typing class before?",
+    "data": {
+      "options": [
+        {"text": "Yes"},
+        {"text": "No"}
+      ]
+    }
+  },
+  {
+    "type": "multiple-choice",
+    "text": "Do you have any formal musical training?",
+    "data": {
+      "options": [
+        {
+          "text": "Yes",
+          "followup": {
+            "type": "free-response",
+            "text": "What was the duration of the formal musical training?"
+          }
+        },
+        {"text": "No"}
+      ]
+    }
+  }
+]
