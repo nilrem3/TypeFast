@@ -1,7 +1,15 @@
-<p>datasave works!</p>
-
 {{ data }}
+<h1> Create New Sheet </h1>
+
+<p>Please choose a strong password</p>
+<input type="password" [(ngModel)]="newsheet_password"
+(input)="newSheetPasswordsChanged()" placeholder="password">
+<input type="password" [(ngModel)]="newsheet_confirm_password"
+(input)="newSheetPasswordsChanged()" placeholder="confirm password">
+<p>{{ newsheet_message }}</p>
 
 <button (click)="onNewSheetClicked()">
   New Sheet
 </button>
+
+<h1> Add Data to Sheet </h1>

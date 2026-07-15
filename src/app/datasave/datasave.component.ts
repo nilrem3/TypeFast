@@ -11,6 +11,10 @@ export class DatasaveComponent implements OnInit {
   datacollectionService;
   data;
 
+  newsheet_password;
+  newsheet_confirm_password;
+  newsheet_message = "";
+
   constructor(
     private dS: DatacollectorService
   ) {
@@ -23,7 +27,22 @@ export class DatasaveComponent implements OnInit {
   }
 
   onNewSheetClicked() {
-    (window as any).electronAPI.createSheet("test_name.xlsx", "test_pw");
+    if (this.newsheet_password !== this.newsheet_confirm_password) {
+      this.newsheet_message = "passwords do not match.";
+      return;
+    }
+    if (this.newsheet_password.length < 16) {
+      this.newsheet_message = "password is not long enough to meet modern security recommendations.";
+      return;
+    }
+    let pw = this.newsheet_password;
+    this.newsheet_password = "";
+    this.newsheet_confirm_password = "";
+    (window as any).electronAPI.createSheet("test_name.xlsx", this.newsheet_password);
+  }
+
+  newSheetPasswordsChanged() {
+    this.newsheet_message = "";
   }
 
 }

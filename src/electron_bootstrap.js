@@ -21,7 +21,6 @@ app.whenReady().then(() => {
 });
 
 function handleCreateSheet(event, props) {
-  console.log(props);
   dialog.showSaveDialog({
     defaultPath: props.name
   });
