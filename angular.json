@@ -30,6 +30,7 @@
               "src/assets",
               "src/package.json",
               "src/electron_bootstrap.js",
+              "src/preload.js",
               "src/roboto_mono.css",
               "src/roboto.css",
               "src/roboto_mono.ttf",

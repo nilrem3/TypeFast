@@ -22,4 +22,8 @@ export class DatasaveComponent implements OnInit {
 
   }
 
+  onNewSheetClicked() {
+    (window as any).electronAPI.createSheet("test_name.xlsx", "test_pw");
+  }
+
 }
