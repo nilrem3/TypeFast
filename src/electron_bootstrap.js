@@ -1,5 +1,6 @@
 const { app, BrowserWindow, dialog, ipcMain } = require('electron');
 const path = require("node:path");
+const XlsxPopulate = require('xlsx-populate');
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -23,5 +24,13 @@ app.whenReady().then(() => {
 function handleCreateSheet(event, props) {
   dialog.showSaveDialog({
     defaultPath: props.name
+  }).then((results) => {
+    if (results.cancelled) {
+      return;
+    }
+    let path = results.filePath;
+    XlsxPopulate.fromBlankAsync().then(workbook => {
+      return workbook.toFileAsync(path, {password: props.pw});
+    });
   });
 }

@@ -38,7 +38,7 @@ export class DatasaveComponent implements OnInit {
     let pw = this.newsheet_password;
     this.newsheet_password = "";
     this.newsheet_confirm_password = "";
-    (window as any).electronAPI.createSheet("test_name.xlsx", this.newsheet_password);
+    (window as any).electronAPI.createSheet("test_name.xlsx", pw);
   }
 
   newSheetPasswordsChanged() {
