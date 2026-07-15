@@ -9,10 +9,15 @@ export class QuestionsService {
 
   httpClient = inject(HttpClient);
   pretest_questions?: Question[]
+  posttest_questions?: Question[]
 
   constructor() {
     this.httpClient.get('assets/pretest_questions.json', { responseType: 'json' }).subscribe(data => {
       this.pretest_questions = data as Question[];
+      console.log(data);
+    });
+    this.httpClient.get('assets/posttest_questions.json', { responseType: 'json' }).subscribe(data => {
+      this.posttest_questions = data as Question[];
       console.log(data);
     });
   }

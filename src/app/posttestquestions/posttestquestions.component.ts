@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { QuestionsService } from '../questions.service';
 
 @Component({
   selector: 'app-posttestquestions',
@@ -8,7 +9,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class PosttestquestionsComponent implements OnInit {
   @Output() submitClicked = new EventEmitter();
 
-  constructor() { }
+  questionsService: QuestionsService;
+
+  constructor(questionsService: QuestionsService) {
+    this.questionsService = questionsService;
+  }
 
   ngOnInit(): void {
   }
