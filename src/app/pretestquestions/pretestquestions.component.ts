@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, inject} from '@angular/core';
+import { QuestionsService } from '../questions.service';
 
 @Component({
   selector: 'app-pretestquestions',
@@ -8,7 +9,11 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class PretestquestionsComponent implements OnInit {
   @Output() beginClicked = new EventEmitter<boolean>();
 
-  constructor() { }
+  questionsService: QuestionsService
+
+  constructor(questionsService: QuestionsService) {
+    this.questionsService = questionsService;
+  }
 
   ngOnInit(): void {
   }
