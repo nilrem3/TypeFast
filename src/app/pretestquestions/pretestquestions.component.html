@@ -1,4 +1,11 @@
 
+<div *ngIf="questionsService.pretest_questions">
+  <div *ngFor="let question of questionsService.pretest_questions">
+    <app-question [question]="question"></app-question>
+  </div>
+</div>
+<div *ngIf="!questionsService.pretest_questions">Loading Questions...</div>
+
 
 <p>When you click Begin, you will be presented with the test screen. As soon as you
 begin to type, the test will begin.</p>

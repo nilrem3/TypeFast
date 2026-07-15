@@ -19,6 +19,7 @@ import { PosttestquestionsComponent } from './posttestquestions/posttestquestion
 import { HandoffpromptComponent } from './handoffprompt/handoffprompt.component';
 import { DatasaveComponent } from './datasave/datasave.component';
 import { DatacollectorService } from './datacollector.service';
+import { QuestionComponent } from './components/question/question.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { DatacollectorService } from './datacollector.service';
     PosttestquestionsComponent,
     HandoffpromptComponent,
     DatasaveComponent,
+    QuestionComponent,
   ],
   imports: [
     BrowserModule,
