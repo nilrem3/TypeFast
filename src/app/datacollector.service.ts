@@ -8,12 +8,17 @@ export class DatacollectorService {
   constructor() { }
 
   pretestquestiondata: any;
+  nomusictestdata: any;
   familiartestdata: any;
   unfamiliartestdata: any;
   posttestquestiondata: any;
 
   setPretestQuestionData(data) {
     this.pretestquestiondata = data;
+  }
+
+  setNoMusicTestData(data) {
+    this.nomusictestdata = data;
   }
 
   setFamiliarTestData(data) {
@@ -31,6 +36,7 @@ export class DatacollectorService {
   getData() {
     return {
       "pretest": this.pretestquestiondata,
+      "nomusic": this.nomusictestdata,
       "familiar": this.familiartestdata,
       "unfamiliar": this.unfamiliartestdata,
       "posttest": this.posttestquestiondata

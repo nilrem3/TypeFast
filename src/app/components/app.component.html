@@ -4,7 +4,8 @@
 ></app-pretestquestions>
 
 <app-typer
-[familiar]="familiarTest === 'Test1'"
+[familiar]="false"
+[music]="false"
 *ngIf="appMode === 'Test1'"
 (focusFunctionReady)="onFocusFunctionReady($event)"
 (testNextButtonPressed)="onTestNextPressed($event)"
@@ -12,10 +13,20 @@
 
 <app-typer
 [familiar]="familiarTest === 'Test2'"
+[music]="true"
 *ngIf="appMode === 'Test2'"
 (focusFunctionReady)="onFocusFunctionReady($event)"
 (testNextButtonPressed)="onTestNextPressed($event)"
 ></app-typer>
+
+<app-typer
+[familiar]="familiarTest === 'Test3'"
+[music]="true"
+*ngIf="appMode === 'Test3'"
+(focusFunctionReady)="onFocusFunctionReady($event)"
+(testNextButtonPressed)="onTestNextPressed($event)"
+></app-typer>
+
 
 <app-posttestquestions
 *ngIf="appMode === 'PostTestQuestions'"

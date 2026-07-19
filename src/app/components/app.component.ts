@@ -6,6 +6,7 @@ enum AppMode {
   PreTestQuestions = "PreTestQuestions",
   Test1 = "Test1",
   Test2 = "Test2",
+  Test3 = "Test3",
   PostTestQuestions = "PostTestQuestions",
   HandoffPrompt = "HandoffPrompt",
   ResearcherFileSelect = "ResearcherFileSelect"
@@ -21,14 +22,15 @@ export class AppComponent {
 
   appMode = AppMode.PreTestQuestions;
 
-  familiarTest = AppMode.Test1; // could also be Test2
+  familiarTest = AppMode.Test2; // could also be Test3, but not Test1
 
-  datacollectionService;
+  datacollectionService: DatacollectorService;
 
   private typeTestFocusFunction: () => void;
 
   constructor(private dS: DatacollectorService) {
     this.datacollectionService = dS;
+    this.familiarTest = Math.random() > 0.5 ? AppMode.Test2 : AppMode.Test3;
   }
 
   onPreferencesToggled(show: boolean): void {
@@ -58,7 +60,9 @@ export class AppComponent {
   onTestNextPressed(results: TestResults): void {
     // send the results to the savedata
 
-    if (this.appMode == this.familiarTest) {
+    if (this.appMode == AppMode.Test1) { // no music
+      this.datacollectionService.setNoMusicTestData(results);
+    } else if (this.appMode == this.familiarTest) {
       this.datacollectionService.setFamiliarTestData(results);
     } else {
       this.datacollectionService.setUnfamiliarTestData(results);
@@ -66,6 +70,8 @@ export class AppComponent {
 
     if (this.appMode == AppMode.Test1) {
       this.appMode = AppMode.Test2;
+    } else if (this.appMode == AppMode.Test2) {
+      this.appMode = AppMode.Test3;
     } else {
       this.appMode = AppMode.PostTestQuestions;
     }

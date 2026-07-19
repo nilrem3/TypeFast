@@ -46,6 +46,7 @@ export class TyperComponent implements OnInit {
 
   testResults: TestResults;
 
+  @Input() music: boolean;
   @Input() familiar: boolean;
 
   testWords: number = 0;
@@ -312,10 +313,12 @@ export class TyperComponent implements OnInit {
     this.testStarted = true;
     this.testResults.timeElapsed = 0;
 
-    if (this.familiar) {
-      this.familiarAudio.nativeElement.play();
-    } else {
-      this.unfamiliarAudio.nativeElement.play();
+    if (this.music) {
+      if (this.familiar) {
+        this.familiarAudio.nativeElement.play();
+      } else {
+        this.unfamiliarAudio.nativeElement.play();
+      }
     }
   }
 
