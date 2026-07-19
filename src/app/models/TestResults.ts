@@ -1,9 +1,10 @@
 export interface TestResults {
   correctCharacterCount: number;
   incorrectCharacterCount: number;
+  spaceCharacterCount: number;
+  unnecessarySpaceCharacterCount: number;
   correctWordCount: number;
   incorrectWordCount: number;
-  incorrectWords: IncorrectWord[];
   timeElapsed: number;
   stats?: TestResultsStats;
 }

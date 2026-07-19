@@ -165,9 +165,10 @@ export class TyperComponent implements OnInit {
     this.testResults = {
       correctCharacterCount: 0,
       incorrectCharacterCount: 0,
+      spaceCharacterCount: 0,
+      unnecessarySpaceCharacterCount: 0,
       correctWordCount: 0,
       incorrectWordCount: 0,
-      incorrectWords: [],
       timeElapsed: 0,
     };
 
@@ -208,6 +209,7 @@ export class TyperComponent implements OnInit {
         // Space is the only character typed, reset value to nothing
         this.inputElement.value = '';
         this.syncOffset();
+        this.testResults.unnecessarySpaceCharacterCount += 1;
       } else {
         // Space typed, validate word
         this.registerWord(this.wordInput, this.words[this.currentIndex]);
@@ -368,17 +370,14 @@ export class TyperComponent implements OnInit {
         this.currentWordElement.classList.add('word-correct');
         this.testResults.correctWordCount++;
       } else {
-        this.testResults.incorrectWords.push({
-          expected: expected,
-          value: value,
-        });
         this.currentWordElement.classList.add('word-incorrect');
         this.testResults.incorrectWordCount++;
       }
+      this.calculateStats();
     }
 
-    // Only add correct character for end space if word was completed and completely correct
-    let correctCharacters = wordCompleted && wordIsCorrect ? 1 : 0;
+    let spaceCharacters = 1;
+    let correctCharacters = 0;
     let incorrectCharacters = 0;
 
     const length = Math.min(value.length, expected.length);
@@ -395,6 +394,7 @@ export class TyperComponent implements OnInit {
 
     this.testResults.correctCharacterCount += correctCharacters;
     this.testResults.incorrectCharacterCount += incorrectCharacters;
+    this.testResults.spaceCharacterCount += spaceCharacters;
 
     let wordCount = this.testResults.correctWordCount + this.testResults.incorrectWordCount;
 
@@ -506,100 +506,8 @@ export class TyperComponent implements OnInit {
     this.testFinished = true;
   }
 
-  private breakPoints = [
-    {
-      seconds: 1,
-      delta: 0,
-    },
-    {
-      seconds: 5,
-      delta: 1,
-    },
-    {
-      seconds: 30,
-      delta: 5,
-    },
-    {
-      seconds: 120,
-      delta: 15,
-    },
-    {
-      seconds: 300,
-      delta: 30,
-    },
-    {
-      seconds: 600,
-      delta: 60,
-    },
-    {
-      seconds: 1800,
-      delta: 300,
-    },
-    {
-      seconds: 3600,
-      delta: 600,
-    },
-    {
-      seconds: 86400,
-      delta: 3600,
-    },
-    {
-      seconds: -1,
-      delta: 7200,
-    },
-  ];
-
-  onDecreaseClicked(): void {
-    if (this.testStarted) return;
-
-    let decrease = 0;
-
-    this.breakPoints.every((breakpoint) => {
-      if (this.testWords <= breakpoint.seconds || breakpoint.seconds == -1) {
-        decrease = breakpoint.delta;
-        return false;
-      }
-      return true;
-    });
-
-    this.testWords -= decrease;
-
-    this.preferencesService.setPreference(
-      Preference.DEFAULT_TEST_DURATION,
-      this.testWords
-    );
-
-    this.focusInput();
-  }
-
-  onIncreaseClicked(): void {
-    if (this.testStarted) return;
-
-    let increase = 0;
-
-    this.breakPoints.every((breakpoint) => {
-      if (this.testWords < breakpoint.seconds || breakpoint.seconds == -1) {
-        increase = breakpoint.delta;
-        return false;
-      }
-      return true;
-    });
-
-    this.testWords += increase;
-
-    this.preferencesService.setPreference(
-      Preference.DEFAULT_TEST_DURATION,
-      this.testWords
-    );
-
-    this.focusInput();
-  }
-
   onNextClicked(): void {
+    this.calculateStats();
     this.testNextButtonPressed.emit(this.testResults);
-  }
-
-  onIncorrectWordCountClicked(): void {
-    this.incorrectWordsOpen = true;
   }
 }
