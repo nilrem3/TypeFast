@@ -427,7 +427,7 @@ export class TyperComponent implements OnInit {
       ? this.testResults.correctWordCount / totalWordCount
       : 0;
     stats.cpm = this.testResults.timeElapsed
-      ? (this.testResults.correctCharacterCount /
+      ? ((this.testResults.correctCharacterCount + this.testResults.spaceCharacterCount) /
           this.testResults.timeElapsed) *
         60
       : 0;
