@@ -19,7 +19,7 @@ export class PreferencesService {
     [Preference.FOLLOW_SYSTEM_THEME]: false,
     [Preference.WORD_MODE]: WordMode.WORDS,
     [Preference.REVERSE_SCROLL]: false,
-    [Preference.DEFAULT_TEST_DURATION]: 60,
+    [Preference.DEFAULT_TEST_DURATION]: 100,
     [Preference.TEXT_SIZE]: TextSize.MEDIUM,
     [Preference.SMOOTH_SCROLLING]: true,
     [Preference.SCROLLING_ANIMATION]: true,

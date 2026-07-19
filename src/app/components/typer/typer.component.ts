@@ -48,8 +48,8 @@ export class TyperComponent implements OnInit {
 
   @Input() familiar: boolean;
 
-  testTime: number;
-  testTimeLeft: number;
+  testWords: number = 0;
+  testWordsLeft: number = 0;
 
   testStarted: boolean;
   testFinished: boolean;
@@ -90,7 +90,7 @@ export class TyperComponent implements OnInit {
 
     this.preferences = preferencesService.getPreferences();
 
-    this.testTime = this.preferences.get(
+    this.testWords = this.preferences.get(
       Preference.DEFAULT_TEST_DURATION
     ).value;
     this.smoothScroll = this.preferences.get(Preference.SMOOTH_SCROLLING).value;
@@ -140,7 +140,6 @@ export class TyperComponent implements OnInit {
 
     this.inputElement.onpaste = (e) => e.preventDefault();
 
-    this.updateTimer(0);
     this.syncTextSizeClass();
 
     this.focusFunctionReady.emit(this.focusInput.bind(this));
@@ -150,7 +149,6 @@ export class TyperComponent implements OnInit {
   }
 
   setupTest(): void {
-    this.updateTimer(0);
     this.secondTimer?.unsubscribe();
     this.secondTimer = undefined;
 
@@ -397,21 +395,19 @@ export class TyperComponent implements OnInit {
 
     this.testResults.correctCharacterCount += correctCharacters;
     this.testResults.incorrectCharacterCount += incorrectCharacters;
+
+    let wordCount = this.testResults.correctWordCount + this.testResults.incorrectWordCount;
+
+    if (wordCount >= this.testWords) {
+      this.onTypedAllWords();
+    }
+    this.testWordsLeft = this.testWords - wordCount;
+
   }
 
   onSecond(seconds: number): void {
-    this.updateTimer(seconds);
-
-    if (seconds === this.testTime) {
-      this.onTimeRunsOut();
-    }
-
     this.testResults.timeElapsed = seconds;
     this.calculateStats();
-  }
-
-  updateTimer(seconds: number): void {
-    this.testTimeLeft = this.testTime - seconds;
   }
 
   calculateStats(): void {
@@ -482,18 +478,20 @@ export class TyperComponent implements OnInit {
     }
   }
 
-  onTimeRunsOut(): void {
+  onTypedAllWords(): void {
     this.secondTimer.unsubscribe();
     this.secondTimer = undefined;
     this.inputElement.disabled = true;
     this.dummyInputElement.focus();
 
+    // We only ever end the test when a word has been finished so this is
+    // unnecessary
     // Add right/wrong characters for current word
-    this.registerWord(
+    /*this.registerWord(
       this.wordInput.trim(),
       this.words[this.currentIndex].slice(0, this.wordInput.length),
       false
-    );
+    );*/
 
     this.testFinished = true;
     if (this.familiar) {
@@ -501,6 +499,7 @@ export class TyperComponent implements OnInit {
     } else {
       this.unfamiliarAudio.nativeElement.pause();
     }
+    this.calculateStats();
   }
 
   onTestFinished(): void {
@@ -556,21 +555,20 @@ export class TyperComponent implements OnInit {
     let decrease = 0;
 
     this.breakPoints.every((breakpoint) => {
-      if (this.testTime <= breakpoint.seconds || breakpoint.seconds == -1) {
+      if (this.testWords <= breakpoint.seconds || breakpoint.seconds == -1) {
         decrease = breakpoint.delta;
         return false;
       }
       return true;
     });
 
-    this.testTime -= decrease;
+    this.testWords -= decrease;
 
     this.preferencesService.setPreference(
       Preference.DEFAULT_TEST_DURATION,
-      this.testTime
+      this.testWords
     );
 
-    this.updateTimer(0);
     this.focusInput();
   }
 
@@ -580,21 +578,20 @@ export class TyperComponent implements OnInit {
     let increase = 0;
 
     this.breakPoints.every((breakpoint) => {
-      if (this.testTime < breakpoint.seconds || breakpoint.seconds == -1) {
+      if (this.testWords < breakpoint.seconds || breakpoint.seconds == -1) {
         increase = breakpoint.delta;
         return false;
       }
       return true;
     });
 
-    this.testTime += increase;
+    this.testWords += increase;
 
     this.preferencesService.setPreference(
       Preference.DEFAULT_TEST_DURATION,
-      this.testTime
+      this.testWords
     );
 
-    this.updateTimer(0);
     this.focusInput();
   }
 
