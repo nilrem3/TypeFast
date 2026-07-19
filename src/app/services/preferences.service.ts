@@ -19,7 +19,7 @@ export class PreferencesService {
     [Preference.FOLLOW_SYSTEM_THEME]: false,
     [Preference.WORD_MODE]: WordMode.WORDS,
     [Preference.REVERSE_SCROLL]: false,
-    [Preference.DEFAULT_TEST_DURATION]: 100,
+    [Preference.DEFAULT_TEST_DURATION]: 10,
     [Preference.TEXT_SIZE]: TextSize.MEDIUM,
     [Preference.SMOOTH_SCROLLING]: true,
     [Preference.SCROLLING_ANIMATION]: true,
@@ -44,35 +44,16 @@ export class PreferencesService {
   private preferencesSubjects = new Map<string, BehaviorSubject<any>>();
 
   constructor() {
-    addEventListener('storage', this.onStorage.bind(this), false);
-
-    this.retrievePreferences();
+    this.setDefaultPreferences();
   }
 
-  private retrievePreferences() {
-    try {
-      // Set default preferences
-      for (const defaultPreference in this.defaults) {
-        this.preferencesSubjects.set(
-          defaultPreference,
-          new BehaviorSubject(this.defaults[defaultPreference])
-        );
-      }
-
-      const preferences = JSON.parse(localStorage.getItem('preferences'));
-      if (typeof preferences === 'undefined') throw null;
-
-      for (const preference in preferences) {
-        const preferenceKey = preference;
-        const preferenceValue = preferences[preference];
-
-        if (
-          this.validatePreferenceType(preferenceKey, preferenceValue)
-        )
-          this.preferencesSubjects.get(preference)?.next(preferenceValue);
-      }
-    } catch (e) {
-      // Empty
+  private setDefaultPreferences() {
+    // Set default preferences
+    for (const defaultPreference in this.defaults) {
+      this.preferencesSubjects.set(
+        defaultPreference,
+        new BehaviorSubject(this.defaults[defaultPreference])
+      );
     }
   }
 
@@ -123,27 +104,6 @@ export class PreferencesService {
         this.preferencesSubjects
           .get(defaultPreference)
           .next(this.defaults[defaultPreference]);
-      }
-    }
-  }
-
-  private onStorage(event: StorageEvent) {
-    if (event.key == 'preferences') {
-      try {
-        const oldObj: Preferences = JSON.parse(event.oldValue);
-        const newObj: Preferences = JSON.parse(event.newValue);
-
-        Object.keys(this.defaults).forEach((key) => {
-          const newVal = newObj[key];
-          if (
-            oldObj[key] !== newVal &&
-            this.validatePreferenceType(key, newVal)
-          ) {
-            this.preferencesSubjects.get(key).next(newObj[key]);
-          }
-        });
-      } catch (e) {
-        // Empty
       }
     }
   }
