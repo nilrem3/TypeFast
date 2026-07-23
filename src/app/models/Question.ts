@@ -1,7 +1,7 @@
 export interface Question {
   type: "free-response" | "multiple-choice";
   text: string;
-  data: FreeResponseQuestion | MultipleChoiceQuestion
+  data: any; // FreeReponseQuestion | MultipleChoiceQuestion, but need to have it be any for type checker reasons
 }
 
 export interface FreeResponseQuestion {

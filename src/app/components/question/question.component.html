@@ -1,1 +1,15 @@
 <p> {{ question.text }} </p>
+
+<div *ngIf="question.type === 'free-response'">
+  <textarea style="resize: none" placeholder="Type your answer here" rows="5"
+    cols="50"></textarea>
+</div>
+
+<div *ngIf="question.type === 'multiple-choice'">
+  <div *ngFor="let option of question.data.options">
+    <div class="flex-row">
+      <input type="radio" [name]="question.text">
+      <p> {{ option.text }} </p>
+    </div>
+  </div>
+</div>
