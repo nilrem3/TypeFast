@@ -2,7 +2,7 @@
 <div *ngIf="questionsService.pretest_questions">
   <div *ngFor="let question of questionsService.pretest_questions">
     <div class="question">
-      <app-question [question]="question"></app-question>
+      <app-question [question]="question" (answer)="onQuestionAnswered($event)"></app-question>
     </div>
   </div>
 </div>

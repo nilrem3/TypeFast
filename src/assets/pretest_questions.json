@@ -1,6 +1,7 @@
 [
   {
     "type": "multiple-choice",
+    "id": "native_language",
     "text": "Is English one of your native languages?",
     "data": {
       "options": [
@@ -11,11 +12,13 @@
   },
   {
     "type": "free-response",
+    "id": "keyboard_layout",
     "text": "What keyboard layout do you usually use to type English? (ex. QWERTY, AZERTY, colemak...)",
     "data": {}
   },
   {
     "type": "multiple-choice",
+    "id": "typing_class",
     "text": "Have you ever taken a typing class before?",
     "data": {
       "options": [
@@ -26,6 +29,7 @@
   },
   {
     "type": "multiple-choice",
+    "id": "musical_training",
     "text": "Do you have any formal musical training?",
     "data": {
       "options": [
@@ -33,6 +37,7 @@
           "text": "Yes",
           "followup": {
             "type": "free-response",
+            "id": "musical_training_duration",
             "text": "What was the duration of the formal musical training?"
           }
         },

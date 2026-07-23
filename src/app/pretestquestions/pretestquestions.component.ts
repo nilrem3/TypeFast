@@ -9,7 +9,7 @@ import { QuestionsService } from '../questions.service';
 export class PretestquestionsComponent implements OnInit {
   @Output() beginClicked = new EventEmitter<boolean>();
 
-  questionsService: QuestionsService
+  questionsService: QuestionsService;
 
   constructor(questionsService: QuestionsService) {
     this.questionsService = questionsService;
@@ -20,6 +20,11 @@ export class PretestquestionsComponent implements OnInit {
 
   onBeginClicked(): void {
     this.beginClicked.emit()
+  }
+
+  onQuestionAnswered(event: any) {
+    this.questionsService.pretest_question_answers[event.id] = event.answer;
+    console.log(event);
   }
 
 }

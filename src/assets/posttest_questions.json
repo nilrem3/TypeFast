@@ -1,11 +1,13 @@
 [
   {
     "type": "free-response",
+    "id": "first_test_music_feelings",
     "text": "How did the music during the first test make you feel?",
     "data": {}
   },
   {
     "type": "free-response",
+    "id": "second_test_music_feelings",
     "text": "How did the music during the second test make you feel?",
     "data": {}
   }

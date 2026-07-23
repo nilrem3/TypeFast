@@ -1,5 +1,6 @@
 export interface Question {
   type: "free-response" | "multiple-choice";
+  id: string;
   text: string;
   data: any; // FreeReponseQuestion | MultipleChoiceQuestion, but need to have it be any for type checker reasons
 }
@@ -14,24 +15,4 @@ export interface MultipleChoiceQuestion {
 export interface MultipleChoiceOption {
   text: string;
   followup?: Question
-}
-
-// returns the total number of columns needed to fit the answer to this question
-// (and all subquestions)
-export function numColumns(q: Question) {
-  if (q.type === "free-response") {
-    return 1
-  }
-  if (q.type === "multiple-choice") {
-    let data = q.data as MultipleChoiceQuestion;
-    let total = 1;
-    for (const response of data.options) {
-      if (response.followup) {
-        total += numColumns(response.followup);
-      }
-    }
-    return total;
-  }
-  // unrecognized question type
-  return -1;
 }
