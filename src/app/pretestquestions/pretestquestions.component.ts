@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, inject} from '@angular/core';
+import { DatacollectorService } from '../datacollector.service';
 import { QuestionsService } from '../questions.service';
 
 @Component({
@@ -10,10 +11,12 @@ export class PretestquestionsComponent implements OnInit {
   @Output() beginClicked = new EventEmitter<boolean>();
 
   questionsService: QuestionsService;
+  datacollectorService: DatacollectorService;
   errorMessage: string = "";
 
-  constructor(questionsService: QuestionsService) {
+  constructor(questionsService: QuestionsService, datacollectorService: DatacollectorService) {
     this.questionsService = questionsService;
+    this.datacollectorService = datacollectorService;
   }
 
   ngOnInit(): void {
@@ -21,6 +24,8 @@ export class PretestquestionsComponent implements OnInit {
 
   onBeginClicked(): void {
     if (this.questionsService.pretestQuestionsAllAnswered()) {
+      // typecast is safe because we know all questions are answered by now
+      this.datacollectorService.setPretestQuestionData(this.questionsService.pretest_question_answers as Map<string, string>);
       this.beginClicked.emit()
     } else {
       this.errorMessage = "Please answer all of the questions.";

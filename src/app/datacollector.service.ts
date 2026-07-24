@@ -7,13 +7,14 @@ export class DatacollectorService {
 
   constructor() { }
 
-  pretestquestiondata: any;
+  pretestquestiondata: Map<string, string>;
   nomusictestdata: any;
   familiartestdata: any;
   unfamiliartestdata: any;
   posttestquestiondata: any;
+  testorderinfo: any;
 
-  setPretestQuestionData(data) {
+  setPretestQuestionData(data: Map<string, string>) {
     this.pretestquestiondata = data;
   }
 
@@ -33,13 +34,18 @@ export class DatacollectorService {
     this.posttestquestiondata = data;
   }
 
+  setTestorderData(data) {
+    this.testorderinfo = data;
+  }
+
   getData() {
     return {
       "pretest": this.pretestquestiondata,
       "nomusic": this.nomusictestdata,
       "familiar": this.familiartestdata,
       "unfamiliar": this.unfamiliartestdata,
-      "posttest": this.posttestquestiondata
+      "posttest": this.posttestquestiondata,
+      "orderinfo": this.testorderinfo
     }
   }
 }

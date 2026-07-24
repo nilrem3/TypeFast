@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { DatacollectorService } from '../datacollector.service';
 import { QuestionsService } from '../questions.service';
 
 @Component({
@@ -10,10 +11,12 @@ export class PosttestquestionsComponent implements OnInit {
   @Output() submitClicked = new EventEmitter();
 
   questionsService: QuestionsService;
+  datacollectorService: DatacollectorService;
   errorMessage: string;
 
-  constructor(questionsService: QuestionsService) {
+  constructor(questionsService: QuestionsService, datacollectorService: DatacollectorService) {
     this.questionsService = questionsService;
+    this.datacollectorService = datacollectorService;
   }
 
   ngOnInit(): void {
@@ -21,6 +24,8 @@ export class PosttestquestionsComponent implements OnInit {
 
   onSubmitClicked(): void {
     if (this.questionsService.posttestQuestionsAllAnswered()) {
+      // typecast is safe because we know all questions are answered by now
+      this.datacollectorService.setPosttestQuestionData(this.questionsService.posttest_question_answers as Map<string, string>);
       this.submitClicked.emit()
     } else {
       this.errorMessage = "Please answer all of the questions.";

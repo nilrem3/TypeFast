@@ -31,6 +31,7 @@ export class AppComponent {
   constructor(private dS: DatacollectorService) {
     this.datacollectionService = dS;
     this.familiarTest = Math.random() > 0.5 ? AppMode.Test2 : AppMode.Test3;
+    this.datacollectionService.setTestorderData(this.familiarTest === AppMode.Test2 ? "familiar first" : "familiar second");
   }
 
   onPreferencesToggled(show: boolean): void {
