@@ -20,7 +20,6 @@ export class PretestquestionsComponent implements OnInit {
   }
 
   onBeginClicked(): void {
-    console.log("Beginning Test");
     if (this.questionsService.pretestQuestionsAllAnswered()) {
       this.beginClicked.emit()
     } else {

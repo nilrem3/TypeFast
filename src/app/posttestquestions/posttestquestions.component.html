@@ -1,10 +1,10 @@
 <div *ngIf="questionsService.posttest_questions">
   <div *ngFor="let question of questionsService.posttest_questions">
-    <app-question [question]="question"></app-question>
+    <app-question [question]="question" (answer)="onQuestionAnswered($event)"></app-question>
   </div>
 </div>
 <div *ngIf="!questionsService.posttest_questions">Loading Questions...</div>
 
-<p>posttestquestions works!</p>
+<p style="color: red"> {{ errorMessage }} </p>
 
 <button class="transition-button" (click)="onSubmitClicked()">Submit</button>

@@ -10,6 +10,7 @@ export class PosttestquestionsComponent implements OnInit {
   @Output() submitClicked = new EventEmitter();
 
   questionsService: QuestionsService;
+  errorMessage: string;
 
   constructor(questionsService: QuestionsService) {
     this.questionsService = questionsService;
@@ -19,7 +20,16 @@ export class PosttestquestionsComponent implements OnInit {
   }
 
   onSubmitClicked(): void {
-    this.submitClicked.emit();
+    if (this.questionsService.posttestQuestionsAllAnswered()) {
+      this.submitClicked.emit()
+    } else {
+      this.errorMessage = "Please answer all of the questions.";
+    }
+  }
+
+  onQuestionAnswered(event: any) {
+    this.questionsService.posttest_question_answers.set(event.id, event.answer);
+    this.errorMessage = "";
   }
 
 }

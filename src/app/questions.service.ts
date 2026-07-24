@@ -29,7 +29,6 @@ export class QuestionsService {
   }
 
   registerPretestQuestion(q: Question) {
-    console.log(`Registering pretestquestion ${q.id}`);
     this.pretest_question_answers.set(q.id, NO_ANSWER);
     if (q.type === "multiple-choice") {
       for (let o of (q.data as MultipleChoiceQuestion).options) {
@@ -52,10 +51,8 @@ export class QuestionsService {
   }
 
   pretestQuestionsAllAnswered(): boolean {
-    console.log("checking if all pretest questions are answered...");
     let ret = true;
     this.pretest_question_answers.forEach((value, key) => {
-      console.log(`${key}: ${value}`);
       if (value === NO_ANSWER) {
         ret = false;
       }
