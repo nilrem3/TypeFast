@@ -10,5 +10,27 @@
     "id": "second_test_music_feelings",
     "text": "How did the music during the second test make you feel?",
     "data": {}
+  },
+  {
+    "type": "multiple-choice",
+    "id": "first_test_music_known",
+    "text": "During the first typing test that had music, had you heard the song before?",
+    "data": {
+      "options": [
+        {"text": "Yes"},
+        {"text": "No"}
+      ]
+    }
+  },
+  {
+    "type": "multiple-choice",
+    "id": "second_test_music_known",
+    "text": "During the second typing test that had music, had you heard the song before?",
+    "data": {
+      "options": [
+        {"text": "Yes"},
+        {"text": "No"}
+      ]
+    }
   }
 ]
