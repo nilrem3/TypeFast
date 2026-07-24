@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MultipleChoiceQuestion, Question } from '../../models/Question';
+import { MultipleChoiceQuestion, Question, NO_ANSWER } from '../../models/Question';
 
 @Component({
   selector: 'app-question',
@@ -22,7 +22,7 @@ export class QuestionComponent implements OnInit {
 
   onFreeResponseEdited() {
     if (this.freeResponseText === "") {
-      this.updateAnswer(null);
+      this.updateAnswer(NO_ANSWER);
     } else {
       this.updateAnswer(this.freeResponseText);
     }
@@ -53,7 +53,7 @@ export class QuestionComponent implements OnInit {
           if (o.text == new_answer) {
             this.answer.emit({
               id: o.followup.id,
-              answer: null
+              answer: NO_ANSWER
             });
           } else {
             this.answer.emit({

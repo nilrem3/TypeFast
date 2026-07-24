@@ -10,6 +10,7 @@ export class PretestquestionsComponent implements OnInit {
   @Output() beginClicked = new EventEmitter<boolean>();
 
   questionsService: QuestionsService;
+  errorMessage: string = "";
 
   constructor(questionsService: QuestionsService) {
     this.questionsService = questionsService;
@@ -19,12 +20,17 @@ export class PretestquestionsComponent implements OnInit {
   }
 
   onBeginClicked(): void {
-    this.beginClicked.emit()
+    console.log("Beginning Test");
+    if (this.questionsService.pretestQuestionsAllAnswered()) {
+      this.beginClicked.emit()
+    } else {
+      this.errorMessage = "Please answer all of the questions.";
+    }
   }
 
   onQuestionAnswered(event: any) {
-    this.questionsService.pretest_question_answers[event.id] = event.answer;
-    console.log(event);
+    this.questionsService.pretest_question_answers.set(event.id, event.answer);
+    this.errorMessage = "";
   }
 
 }

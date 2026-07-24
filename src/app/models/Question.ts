@@ -16,3 +16,6 @@ export interface MultipleChoiceOption {
   text: string;
   followup?: Question
 }
+
+export type NO_ANSWER = 0;
+export const NO_ANSWER: NO_ANSWER = 0;
