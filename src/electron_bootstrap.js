@@ -19,6 +19,7 @@ const createWindow = () => {
 app.whenReady().then(() => {
   ipcMain.on('create-sheet', handleCreateSheet);
   ipcMain.handle('append-data', handleAppendData);
+  ipcMain.on('quit', handleClose);
   win = createWindow();
 });
 
@@ -196,4 +197,8 @@ function handleAppendData(event, props) {
     });
   });
   return output;
+}
+
+function handleClose() {
+  app.quit();
 }

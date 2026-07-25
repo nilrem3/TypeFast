@@ -18,6 +18,8 @@ export class DatasaveComponent implements OnInit {
   savesheet_password = "";
   savesheet_message = "";
 
+  result_message = "";
+
   constructor(
     private dS: DatacollectorService
   ) {
@@ -54,7 +56,12 @@ export class DatasaveComponent implements OnInit {
     this.savesheet_password = "";
     let result = (window as any).electronAPI.appendData(pw, this.data);
     result.then(response => {
-      console.log(response); // why is it undefined when cancelling the file picker
+      if (response.error) {
+        this.result_message = response.message;
+      } else {
+        alert("Data Saved Successfully");
+        (window as any).electronAPI.quit();
+      }
     });
 
   }
