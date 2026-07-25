@@ -19,4 +19,5 @@ export interface TestResultsStats {
   wordAccuracy: number;
   cpm: number;
   wpm: number;
+  real_wpm: number;
 }

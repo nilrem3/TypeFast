@@ -11,9 +11,12 @@ export class DatasaveComponent implements OnInit {
   datacollectionService;
   data;
 
-  newsheet_password;
-  newsheet_confirm_password;
+  newsheet_password = "";
+  newsheet_confirm_password = "";
   newsheet_message = "";
+
+  savesheet_password = "";
+  savesheet_message = "";
 
   constructor(
     private dS: DatacollectorService
@@ -41,8 +44,27 @@ export class DatasaveComponent implements OnInit {
     (window as any).electronAPI.createSheet("test_name.xlsx", pw);
   }
 
+  onSaveDataClicked() {
+    if (this.savesheet_password.length < 16) {
+      this.savesheet_message = "password is not long enough to meet modern security recommendations.";
+      return;
+    }
+
+    let pw = this.savesheet_password;
+    this.savesheet_password = "";
+    let result = (window as any).electronAPI.appendData(pw, this.data);
+    result.then(response => {
+      console.log(response); // why is it undefined when cancelling the file picker
+    });
+
+  }
+
   newSheetPasswordsChanged() {
     this.newsheet_message = "";
+  }
+
+  saveSheetPasswordChanged() {
+    this.savesheet_message = "";
   }
 
 }
