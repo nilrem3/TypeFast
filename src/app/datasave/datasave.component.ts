@@ -60,6 +60,7 @@ export class DatasaveComponent implements OnInit {
         this.result_message = response.message;
       } else {
         alert("Data Saved Successfully");
+        localStorage.clear();
         (window as any).electronAPI.quit();
       }
     });
