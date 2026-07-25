@@ -34,12 +34,6 @@ export class AppComponent {
     this.datacollectionService.setTestorderData(this.familiarTest === AppMode.Test2 ? "familiar first" : "familiar second");
   }
 
-  onPreferencesToggled(show: boolean): void {
-    if (show === false && this.typeTestFocusFunction) {
-      this.typeTestFocusFunction();
-    }
-  }
-
   onFocusFunctionReady(focusFunction: () => void): void {
     if (focusFunction) {
       this.typeTestFocusFunction = focusFunction;
