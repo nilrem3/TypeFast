@@ -1,5 +1,11 @@
 [
   {
+    "type": "free-response",
+    "id": "name",
+    "text": "What is your full name?",
+    "data": {}
+  },
+  {
     "type": "multiple-choice",
     "id": "native_language",
     "text": "Is English one of your native languages?",
