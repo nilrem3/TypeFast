@@ -176,7 +176,6 @@ possible
 head
 consider
 word
-program
 problem
 however
 lead
