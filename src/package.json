@@ -15,6 +15,7 @@
     "xlsx-populate": "^1.21.0"
   },
   "devDependencies": {
-    "@electron/packager": "^20.0.4"
+    "@electron/packager": "^20.0.4",
+    "electron-winstaller": "^5.4.4"
   }
 }
