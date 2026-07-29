@@ -8,7 +8,9 @@
   "main": "electron_bootstrap.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-packager . typefast --platform=win32 --arch=x64 --out dist/ --overwrite",
+    "package": "electron-installer-windows --src dist/typefast-win32-x64 --dest dist/installers/"
   },
   "dependencies": {
     "electron": "^42.5.0",
@@ -16,6 +18,8 @@
   },
   "devDependencies": {
     "@electron/packager": "^20.0.4",
-    "electron-winstaller": "^5.4.4"
-  }
+    "electron-installer-windows": "^3.0.0"
+  },
+  "description": "typing test modified for a study",
+  "author": "Mia Sandgathe"
 }
