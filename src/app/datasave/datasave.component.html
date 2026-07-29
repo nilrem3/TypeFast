@@ -24,8 +24,11 @@
   <input type="password" [(ngModel)]="savesheet_password"
   (input)="saveSheetPasswordChanged()" placeholder="data sheet password">
 
+  <input type="password" [(ngModel)]="savesheet_key_password"
+  (input)="saveSheetPasswordChanged()" placeholder="key password">
+
   <button class="transition-button" (click)="onSaveDataClicked()">
-    Add data to existing sheet
+    Add data to existing sheet (and key)
   </button>
 
   <p style="color: red"> {{ savesheet_message }} </p>

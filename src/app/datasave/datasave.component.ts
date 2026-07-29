@@ -16,6 +16,7 @@ export class DatasaveComponent implements OnInit {
   newsheet_message = "";
 
   savesheet_password = "";
+  savesheet_key_password = "";
   savesheet_message = "";
 
   newkey_password = "";
@@ -65,13 +66,19 @@ export class DatasaveComponent implements OnInit {
 
   onSaveDataClicked() {
     if (this.savesheet_password.length < 16) {
-      this.savesheet_message = "password is not long enough to meet modern security recommendations.";
+      this.savesheet_message = "sheet password is not long enough to meet modern security recommendations.";
+      return;
+    }
+    if (this.savesheet_key_password.length < 16) {
+      this.savesheet_message = "key password is not long enough to meet modern security recommendations.";
       return;
     }
 
     let pw = this.savesheet_password;
     this.savesheet_password = "";
-    let result = (window as any).electronAPI.appendData(pw, this.data);
+    let key_pw = this.savesheet_key_password;
+    this.savesheet_key_password = "";
+    let result = (window as any).electronAPI.appendData(pw, key_pw, this.data);
     result.then(response => {
       if (response.error) {
         this.savesheet_message = response.message;
