@@ -13,5 +13,8 @@
   "dependencies": {
     "electron": "^42.5.0",
     "xlsx-populate": "^1.21.0"
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.0.4"
   }
 }
