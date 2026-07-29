@@ -2,6 +2,8 @@ const { app, BrowserWindow, dialog, ipcMain } = require('electron');
 const path = require("node:path");
 const XlsxPopulate = require('xlsx-populate');
 
+if (require("electron-squirrel-startup")) return;
+
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 1000,

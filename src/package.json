@@ -1,9 +1,9 @@
 {
   "name": "typefast",
   "version": "1.0.0",
-  "description": "",
+  "description": "typing test modified for a study",
   "license": "ISC",
-  "author": "",
+  "author": "Mia Sandgathe",
   "type": "commonjs",
   "main": "electron_bootstrap.js",
   "scripts": {
@@ -14,12 +14,11 @@
   },
   "dependencies": {
     "electron": "^42.5.0",
+    "electron-squirrel-startup": "^1.0.1",
     "xlsx-populate": "^1.21.0"
   },
   "devDependencies": {
     "@electron/packager": "^20.0.4",
     "electron-installer-windows": "^3.0.0"
-  },
-  "description": "typing test modified for a study",
-  "author": "Mia Sandgathe"
+  }
 }
