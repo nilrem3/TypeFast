@@ -1,19 +1,21 @@
-<p> {{ question.text }} </p>
+<div class="question">
+  <p> {{ question.text }} </p>
 
-<div *ngIf="question.type === 'free-response'">
-  <textarea style="resize: none" placeholder="Type your answer here" rows="5"
-    cols="50" (input)="onFreeResponseEdited()" [(ngModel)]="freeResponseText"></textarea>
-</div>
-
-<div *ngIf="question.type === 'multiple-choice'">
-  <div *ngFor="let option of question.data.options">
-    <div class="flex-row">
-      <input type="radio" [name]="question.text" (input)="onMultipleChoiceEdited(option.text)">
-      <p> {{ option.text }} </p>
-    </div>
+  <div *ngIf="question.type === 'free-response'">
+    <textarea style="resize: none" placeholder="Type your answer here" rows="5"
+      cols="50" (input)="onFreeResponseEdited()" [(ngModel)]="freeResponseText"></textarea>
   </div>
-  <div *ngIf="followupQuestion">
-    <app-question [question]="followupQuestion" (answer)
-    ="onFollowupAnswer($event)"></app-question>
+
+  <div *ngIf="question.type === 'multiple-choice'">
+    <div *ngFor="let option of question.data.options">
+      <div class="flex-row">
+        <input type="radio" [name]="question.text" (input)="onMultipleChoiceEdited(option.text)">
+        <p> {{ option.text }} </p>
+      </div>
+    </div>
+    <div *ngIf="followupQuestion">
+      <app-question [question]="followupQuestion" (answer)
+      ="onFollowupAnswer($event)"></app-question>
+    </div>
   </div>
 </div>

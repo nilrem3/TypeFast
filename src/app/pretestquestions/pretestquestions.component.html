@@ -1,16 +1,17 @@
 
-<div *ngIf="questionsService.pretest_questions">
+<div class="main-column" *ngIf="questionsService.pretest_questions">
   <div *ngFor="let question of questionsService.pretest_questions">
     <div class="question">
       <app-question [question]="question" (answer)="onQuestionAnswered($event)"></app-question>
     </div>
+  </div>
+  <div id="begin">
+    <p>When you click Begin, you will be presented with the test screen. As soon as you
+    begin to type, the test will begin.</p>
+    <button class="transition-button" (click)="onBeginClicked()">Begin</button>
   </div>
 </div>
 <div *ngIf="!questionsService.pretest_questions">Loading Questions...</div>
 
 <p style="color: red"> {{ errorMessage }} </p>
 
-<p>When you click Begin, you will be presented with the test screen. As soon as you
-begin to type, the test will begin.</p>
-
-<button class="transition-button" (click)="onBeginClicked()">Begin</button>

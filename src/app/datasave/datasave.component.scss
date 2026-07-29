@@ -1,8 +1,20 @@
 * {
-  color: white;
+  color: #ababab;
+  font-size: 1.5em;
+  font-family: Roboto Mono;
 }
 
 input {
   background-color: #090909;
-  font-size: 20px;
+}
+
+.box {
+  border-radius: 15px;
+  border: 3px solid #ababab;
+  margin: 20px;
+  padding: 10px;
+}
+
+.box > * {
+  padding: 3px;
 }

@@ -1,4 +1,4 @@
-<div>
+<div class="box">
   <h1> Create New Sheet </h1>
 
   <p>Please choose a strong password for the data spreadsheet.</p>
@@ -18,7 +18,7 @@
   </button>
 </div>
 
-<div>
+<div class="box">
   <h1> Save Data </h1>
 
   <input type="password" [(ngModel)]="savesheet_password"
@@ -26,7 +26,7 @@
 
   <input type="password" [(ngModel)]="savesheet_key_password"
   (input)="saveSheetPasswordChanged()" placeholder="key password">
-
+  <br>
   <button class="transition-button" (click)="onSaveDataClicked()">
     Add data to existing sheet (and key)
   </button>

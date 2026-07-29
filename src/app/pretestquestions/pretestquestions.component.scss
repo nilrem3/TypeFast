@@ -4,6 +4,12 @@ p {
   font-family: Roboto Mono;
 }
 
-.question {
+.main-column {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#begin {
   margin: 50px;
 }
