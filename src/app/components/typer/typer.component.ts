@@ -309,7 +309,7 @@ export class TyperComponent implements OnInit {
   }
 
   startTest(): void {
-    this.secondTimer = timer(0, 1000).subscribe(this.onSecond.bind(this));
+    this.secondTimer = timer(0, 50).subscribe(this.onSecond.bind(this));
     this.testStarted = true;
     this.testResults.timeElapsed = 0;
 
@@ -408,8 +408,8 @@ export class TyperComponent implements OnInit {
 
   }
 
-  onSecond(seconds: number): void {
-    this.testResults.timeElapsed = seconds;
+  onSecond(timesteps: number): void {
+    this.testResults.timeElapsed = timesteps / 20; // 20 steps per second
     this.calculateStats();
   }
 
