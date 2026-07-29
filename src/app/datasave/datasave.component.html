@@ -1,26 +1,32 @@
-<p>{{ data }}</p>
-<h1> Create New Sheet </h1>
+<div>
+  <h1> Create New Sheet </h1>
 
-<p>Please choose a strong password</p>
-<input type="password" [(ngModel)]="newsheet_password"
-(input)="newSheetPasswordsChanged()" placeholder="new password">
-<input type="password" [(ngModel)]="newsheet_confirm_password"
-(input)="newSheetPasswordsChanged()" placeholder="confirm password">
-<p>{{ newsheet_message }}</p>
+  <p>Please choose a strong password for the data spreadsheet.</p>
+  <input type="password" [(ngModel)]="newsheet_password"
+  (input)="newSheetPasswordsChanged()" placeholder="new password">
+  <input type="password" [(ngModel)]="newsheet_confirm_password"
+  (input)="newSheetPasswordsChanged()" placeholder="confirm password">
+  <p>Please choose a strong password for the key.</p>
+  <input type="password" [(ngModel)]="newkey_password"
+  (input)="newSheetPasswordsChanged()" placeholder="new key password">
+  <input type="password" [(ngModel)]="newkey_confirm_password"
+  (input)="newSheetPasswordsChanged()" placeholder="confirm key password">
+  <p style="color: red">{{ newsheet_message }}</p>
 
-<button class="transition-button" (click)="onNewSheetClicked()">
-  New Sheet
-</button>
+  <button class="transition-button" (click)="onNewSheetClicked()">
+    New Sheet (and Key)
+  </button>
+</div>
 
-<h1> Add Data to Sheet </h1>
+<div>
+  <h1> Save Data </h1>
 
-<input type="password" [(ngModel)]="savesheet_password"
-(input)="saveSheetPasswordChanged()" placeholder="password">
+  <input type="password" [(ngModel)]="savesheet_password"
+  (input)="saveSheetPasswordChanged()" placeholder="data sheet password">
 
-<p> {{ savesheet_message }} </p>
+  <button class="transition-button" (click)="onSaveDataClicked()">
+    Add data to existing sheet
+  </button>
 
-<button class="transition-button" (click)="onSaveDataClicked()">
-  Add data to existing sheet
-</button>
-
-<p> {{ result_message }} </p>
+  <p style="color: red"> {{ savesheet_message }} </p>
+</div>

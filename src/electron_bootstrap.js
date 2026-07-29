@@ -18,13 +18,36 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
   ipcMain.on('create-sheet', handleCreateSheet);
+  ipcMain.on('create-key', handleCreateKey);
   ipcMain.handle('append-data', handleAppendData);
   ipcMain.on('quit', handleClose);
   win = createWindow();
 });
 
+function handleCreateKey(event, props) {
+  dialog.showSaveDialog({
+    title: "Create new key",
+    defaultPath: props.name
+  }).then((results) => {
+    if (results.cancelled) {
+      return;
+    }
+    let path = results.filePath;
+    XlsxPopulate.fromBlankAsync().then(workbook => {
+      const sheet = workbook.addSheet("Key");
+      sheet.cell("A1").value("Subject ID")
+      .relativeCell(0, 1).value("Name");
+
+      workbook.deleteSheet("Sheet1");
+
+      return workbook.toFileAsync(path, {password: props.pw});
+    });
+  });
+}
+
 function handleCreateSheet(event, props) {
   dialog.showSaveDialog({
+    title: "Create new data sheet",
     defaultPath: props.name
   }).then((results) => {
     if (results.cancelled) {
@@ -33,7 +56,8 @@ function handleCreateSheet(event, props) {
     let path = results.filePath;
     XlsxPopulate.fromBlankAsync().then(workbook => {
       const sheet = workbook.addSheet("Data");
-      sheet.cell("A1").value("Native English Speaker?")
+      sheet.cell("A1").value("Subject ID")
+      .relativeCell(0, 1).value("Native English Speaker?")
       .relativeCell(0, 1).value("Keyboard Layout")
       .relativeCell(0, 1).value("Taken a Typing Class?")
       .relativeCell(0, 1).value("Has Musical Training?")
@@ -122,12 +146,16 @@ function handleAppendData(event, props) {
       return;
     }
     XlsxPopulate.fromFileAsync(path, {password: props.pw}).then(workbook => {
+
+      let subject_id = crypto.randomUUID();
+
       let sheet = workbook.sheet("Data");
       let firstCell = sheet.cell("A1");
       while (firstCell.value() !== undefined) {
         firstCell = firstCell.relativeCell(1, 0);
       }
-      firstCell.value(props.data.pretest.get("native_language"))
+      firstCell.value(subject_id)
+      .relativeCell(0, 1).value(props.data.pretest.get("native_language"))
       .relativeCell(0, 1).value(props.data.pretest.get("keyboard_layout"))
       .relativeCell(0, 1).value(props.data.pretest.get("typing_class"))
       .relativeCell(0, 1).value(props.data.pretest.get("musical_training"))
