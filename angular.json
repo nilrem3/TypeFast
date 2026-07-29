@@ -35,7 +35,8 @@
               "src/roboto.css",
               "src/roboto_mono.ttf",
               "src/roboto.ttf",
-              { "glob": "CHANGELOG.md", "input": "./", "output": "./" }
+              { "glob": "CHANGELOG.md", "input": "./", "output": "./" },
+              { "glob": "LICENSE", "input": "./", "output": "./" }
             ],
             "styles": ["src/styles.scss"],
             "scripts": ["node_modules/marked/lib/marked.js"]
