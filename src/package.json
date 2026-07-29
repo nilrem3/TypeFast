@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "build": "electron-packager . typefast --platform=win32 --arch=x64 --out dist/ --overwrite",
+    "build": "electron-packager . typefast --platform=win32 --arch=x64 --out dist/ --overwrite && cp dist/typefast-win32-x64/LICENSE dist/typefast-win32-x64/LICENSE.electron && cp ./LICENSE dist/typefast-win32-x64/LICENSE",
     "package": "electron-installer-windows --src dist/typefast-win32-x64 --dest dist/installers/"
   },
   "dependencies": {
