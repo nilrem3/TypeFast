@@ -25,11 +25,14 @@
   {
     "type": "multiple-choice",
     "id": "typing_class",
-    "text": "Have you ever taken a typing class before?",
+    "text": "Roughly how much do you type on a computer keyboard? Rate from 1 to 5, where a 1 represents 'Rarely spend time typing' and a 5 represents 'Type for a significant amount of time every day'.",
     "data": {
       "options": [
-        {"text": "Yes"},
-        {"text": "No"}
+        {"text": "1"},
+        {"text": "2"},
+        {"text": "3"},
+        {"text": "4"},
+        {"text": "5"}
       ]
     }
   },
