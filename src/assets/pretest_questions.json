@@ -36,7 +36,7 @@
   {
     "type": "multiple-choice",
     "id": "musical_training",
-    "text": "Do you have any formal musical training?",
+    "text": "At any point in your life, have you learned to play an instrument, or to sing?",
     "data": {
       "options": [
         {
@@ -44,7 +44,7 @@
           "followup": {
             "type": "free-response",
             "id": "musical_training_duration",
-            "text": "What was the duration of the formal musical training?"
+            "text": "Roughly how long did you spend learning to play an instrument or to sing?"
           }
         },
         {"text": "No"}
