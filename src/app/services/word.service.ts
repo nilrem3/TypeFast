@@ -195,12 +195,10 @@ export class WordService {
       if (this.wordsCopy.length === 0) {
         this.wordsCopy = this.words.slice();
       }
-      res.push(
-        this.wordsCopy.splice(
-          Math.floor(Math.random() * this.wordsCopy.length),
-          1
-        )[0]
-      );
+      let potential_word = this.wordsCopy.splice(Math.floor(Math.random() * this.wordsCopy.length), 1)[0];
+      if (potential_word !== "") {
+        res.push(potential_word);
+      }
     }
 
     return res;
