@@ -2,34 +2,54 @@
   {
     "type": "free-response",
     "id": "first_test_music_feelings",
-    "text": "How did the music during the first test make you feel?",
+    "text": "How did the music (if any) during the first typing test make you feel?",
     "data": {}
   },
   {
     "type": "free-response",
     "id": "second_test_music_feelings",
-    "text": "How did the music during the second test make you feel?",
+    "text": "How did the music (if any) during the second typing test make you feel?",
+    "data": {}
+  },
+  {
+    "type": "free-response",
+    "id": "third_test_music_feelings",
+    "text": "How did the music (if any) during the third typing test make you feel?",
     "data": {}
   },
   {
     "type": "multiple-choice",
     "id": "first_test_music_known",
-    "text": "During the first typing test that had music, had you heard the song before?",
+    "text": "During the first typing test, had you heard the music before?",
     "data": {
       "options": [
         {"text": "Yes"},
-        {"text": "No"}
+        {"text": "No"},
+        {"text": "There was no music in that test"}
       ]
     }
   },
   {
     "type": "multiple-choice",
     "id": "second_test_music_known",
-    "text": "During the second typing test that had music, had you heard the song before?",
+    "text": "During the second typing test, had you heard the song before?",
     "data": {
       "options": [
         {"text": "Yes"},
-        {"text": "No"}
+        {"text": "No"},
+        {"text": "There was no music in that test"}
+      ]
+    }
+  },
+  {
+    "type": "multiple-choice",
+    "id": "third_test_music_known",
+    "text": "During the third typing test, had you heard the song before?",
+    "data": {
+      "options": [
+        {"text": "Yes"},
+        {"text": "No"},
+        {"text": "There was no music in that test"}
       ]
     }
   }

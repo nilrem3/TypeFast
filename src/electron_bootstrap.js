@@ -108,8 +108,10 @@ function handleCreateSheet(event, props) {
 
       .relativeCell(0, 1).value("First Song Feelings")
       .relativeCell(0, 1).value("Second Song Feelings")
+      .relativeCell(0, 1).value("Third Song Feelings")
       .relativeCell(0, 1).value("Knew First Song")
       .relativeCell(0, 1).value("Knew Second Song")
+      .relativeCell(0, 1).value("Knew Third Song")
 
 
       workbook.deleteSheet("Sheet1");
@@ -245,8 +247,10 @@ function handleAppendData(event, props) {
 
         .relativeCell(0, 1).value(props.data.posttest.get("first_test_music_feelings"))
         .relativeCell(0, 1).value(props.data.posttest.get("second_test_music_feelings"))
+        .relativeCell(0, 1).value(props.data.posttest.get("third_test_music_feelings"))
         .relativeCell(0, 1).value(props.data.posttest.get("first_test_music_known"))
-        .relativeCell(0, 1).value(props.data.posttest.get("second_test_music_known"));
+        .relativeCell(0, 1).value(props.data.posttest.get("second_test_music_known"))
+        .relativeCell(0, 1).value(props.data.posttest.get("third_test_music_known"));
 
         workbook.toFileAsync(path, {password: props.pw});
         resolver({
