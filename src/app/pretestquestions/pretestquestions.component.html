@@ -5,13 +5,16 @@
       <app-question [question]="question" (answer)="onQuestionAnswered($event)"></app-question>
     </div>
   </div>
+  <div style="margin-left: 50px">
+    <p style="color: red"> {{ errorMessage }} </p>
+  </div>
   <div id="begin">
-    <p>When you click Begin, you will be presented with the test screen. As soon as you
-    begin to type, the test will begin.</p>
+    <p>
+    There will be 3 typing tests. During the tests, try to type naturally without stopping.
+    </p>
+    <p>When you click Begin, you will be presented with the typing test screen. As soon as you
+    begin to type, the first typing test will begin.</p>
     <button class="transition-button" (click)="onBeginClicked()">Begin</button>
   </div>
 </div>
 <div *ngIf="!questionsService.pretest_questions">Loading Questions...</div>
-
-<p style="color: red"> {{ errorMessage }} </p>
-
