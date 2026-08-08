@@ -22,7 +22,8 @@ export class AppComponent {
 
   appMode = AppMode.PreTestQuestions;
 
-  familiarTest = AppMode.Test2; // could also be Test3, but not Test1
+  familiarTest;
+  nomusicTest;
 
   datacollectionService: DatacollectorService;
 
@@ -30,8 +31,17 @@ export class AppComponent {
 
   constructor(private dS: DatacollectorService) {
     this.datacollectionService = dS;
-    this.familiarTest = Math.random() > 0.5 ? AppMode.Test2 : AppMode.Test3;
-    this.datacollectionService.setTestorderData(this.familiarTest === AppMode.Test2 ? "familiar first" : "familiar second");
+
+    let testOrder = [AppMode.Test1, AppMode.Test2, AppMode.Test3];
+    this.shuffle(testOrder);
+
+    this.familiarTest = testOrder[0];
+    this.nomusicTest = testOrder[1];
+    this.datacollectionService.setTestorderData({
+      "familiar": testOrder[0],
+      "unfamiliar": testOrder[2],
+      "nomusic": testOrder[1]
+    });
   }
 
   onFocusFunctionReady(focusFunction: () => void): void {
@@ -55,7 +65,7 @@ export class AppComponent {
   onTestNextPressed(results: TestResults): void {
     // send the results to the savedata
 
-    if (this.appMode == AppMode.Test1) { // no music
+    if (this.appMode === this.nomusicTest) {
       this.datacollectionService.setNoMusicTestData(results);
     } else if (this.appMode == this.familiarTest) {
       this.datacollectionService.setFamiliarTestData(results);
@@ -69,6 +79,17 @@ export class AppComponent {
       this.appMode = AppMode.Test3;
     } else {
       this.appMode = AppMode.PostTestQuestions;
+    }
+  }
+
+  shuffle(array): void {
+    let current_idx = array.length;
+    while (current_idx != 0) {
+      let random_idx = Math.floor(Math.random() * current_idx);
+      current_idx -= 1;
+      let t = array[current_idx];
+      array[current_idx] = array[random_idx];
+      array[random_idx] = t;
     }
   }
 }

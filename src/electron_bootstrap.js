@@ -65,7 +65,9 @@ function handleCreateSheet(event, props) {
       .relativeCell(0, 1).value("Has Musical Training?")
       .relativeCell(0, 1).value("Musical Training Duration")
 
-      .relativeCell(0, 1).value("Test Order")
+      .relativeCell(0, 1).value("Familiar Test Order")
+      .relativeCell(0, 1).value("Unfamiliar Test Order")
+      .relativeCell(0, 1).value("Nomusic Test Order")
 
       .relativeCell(0, 1).value("No Music Correct Characters")
       .relativeCell(0, 1).value("No Music Incorrect Characters")
@@ -204,7 +206,9 @@ function handleAppendData(event, props) {
         .relativeCell(0, 1).value(props.data.pretest.get("musical_training"))
         .relativeCell(0, 1).value(props.data.pretest.get("musical_training_duration"))
 
-        .relativeCell(0, 1).value(props.data.orderinfo)
+        .relativeCell(0, 1).value(props.data.orderinfo.familiar)
+        .relativeCell(0, 1).value(props.data.orderinfo.unfamiliar)
+        .relativeCell(0, 1).value(props.data.orderinfo.nomusic)
 
         .relativeCell(0, 1).value(props.data.nomusic.correctCharacterCount)
         .relativeCell(0, 1).value(props.data.nomusic.incorrectCharacterCount)
