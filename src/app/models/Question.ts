@@ -14,7 +14,9 @@ export interface MultipleChoiceQuestion {
 
 export interface MultipleChoiceOption {
   text: string;
-  followup?: Question
+  followup?: Question;
+  image_url?: string;
+  image_attribution?: string;
 }
 
 export type NO_ANSWER = 0;

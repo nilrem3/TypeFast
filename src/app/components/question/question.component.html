@@ -8,9 +8,19 @@
 
   <div *ngIf="question.type === 'multiple-choice'">
     <div *ngFor="let option of question.data.options">
-      <div class="flex-row">
+      <div class="flex-row multiple-choice-option">
         <input type="radio" [name]="question.text" (input)="onMultipleChoiceEdited(option.text)">
-        <p> {{ option.text }} </p>
+        <div class="flex-column">
+          <div class="flex-column" style="align-items: center">
+            <p> {{ option.text }} </p>
+            <div *ngIf="option.image_url">
+              <img [src]="option.image_url" width="500">
+            </div>
+          </div>
+          <div *ngIf="option.image_attribution" class="attribution">
+            <div [innerHTML]="option.image_attribution"></div>
+          </div>
+        </div>
       </div>
     </div>
     <div *ngIf="followupQuestion">

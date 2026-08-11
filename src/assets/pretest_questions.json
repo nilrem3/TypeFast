@@ -17,10 +17,46 @@
     }
   },
   {
-    "type": "free-response",
+    "type": "multiple-choice",
     "id": "keyboard_layout",
-    "text": "What keyboard layout do you usually use to type English? (ex. QWERTY, AZERTY, colemak...)",
-    "data": {}
+    "text": "What keyboard layout do you usually use to type English?",
+    "data": {
+      "options": [
+        {
+          "text": "QWERTY",
+          "image_url": "assets/img/KB_United_States.svg.webp",
+          "image_attribution": "<a href=\"https://commons.wikimedia.org/wiki/File:Qwerty.png\">Diagram</a> by Denelson83, licensed under <a href=\"https://creativecommons.org/licenses/by-sa/3.0/deed.en\">CC BY-SA 3.0</a>"
+        },
+        {
+          "text": "AZERTY",
+          "image_url": "assets/img/KB_AZERTY_FR.png",
+          "image_attribution": "Diagram by <a href=\"https://commons.wikimedia.org/w/index.php?title=User:Campi63&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Campi63 (page does not exist)\">Campi63</a> - <span class=\"int-own-work\" lang=\"en\">Own work</span>, <a href=\"https://creativecommons.org/licenses/by-sa/4.0\" title=\"Creative Commons Attribution-Share Alike 4.0\">CC BY-SA 4.0</a>, <a href=\"https://commons.wikimedia.org/w/index.php?curid=74898350\">Link</a>"
+        },
+        {
+          "text": "QWERTZ",
+          "image_url": "assets/img/KB_QWERTZ.png",
+          "image_attribution": "Diagram by <a href=\"//commons.wikimedia.org/wiki/User:Karl432\" title=\"User:Karl432\">Karl432</a> - <span class=\"int-own-work\" lang=\"en\">Own work</span>, <a href=\"https://creativecommons.org/licenses/by-sa/4.0\" title=\"Creative Commons Attribution-Share Alike 4.0\">CC BY-SA 4.0</a>, <a href=\"https://commons.wikimedia.org/w/index.php?curid=81856248\">Link</a>"
+        },
+        {
+          "text": "Colemak",
+          "image_url": "assets/img/US_Colemak.svg.webp",
+          "image_attribution": "Diagram by <a href=\"//commons.wikimedia.org/wiki/User:R2D2Art2005\" title=\"User:R2D2Art2005\">R2D2Art2005</a> <span class=\"int-own-work\" lang=\"en\">Own work</span>: Modified from <a href=\"https://en.wikipedia.org/wiki/Image:KB_United_States.svg\" class=\"extiw\" title=\"w:Image:KB United States.svg\">Image:KB_United_States.svg</a>, <a href=\"http://creativecommons.org/licenses/by-sa/3.0/\" title=\"Creative Commons Attribution-Share Alike 3.0\">CC BY-SA 3.0</a>, <a href=\"https://commons.wikimedia.org/w/index.php?curid=2207917\">Link</a>"
+        },
+        {
+          "text": "Dvorak",
+          "image_url": "assets/img/KB_Dvorak.svg.webp",
+          "image_attribution": "Public Domain, <a href=\"https://commons.wikimedia.org/w/index.php?curid=874943\">Link</a>"
+        },
+        {
+          "text": "Workman",
+          "image_url": "assets/img/KB_English_Workman.svg.webp",
+          "image_attribution": "Diagram by <a href=\"//commons.wikimedia.org/w/index.php?title=User:Jamadagni&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Jamadagni (page does not exist)\">Jamadagni</a> - <span class=\"int-own-work\" lang=\"en\">Own work</span>, <a href=\"https://creativecommons.org/licenses/by-sa/4.0\" title=\"Creative Commons Attribution-Share Alike 4.0\">CC BY-SA 4.0</a>, <a href=\"https://commons.wikimedia.org/w/index.php?curid=41475397\">Link</a>"
+        },
+        {
+          "text": "Something else"
+        }
+      ]
+    }
   },
   {
     "type": "multiple-choice",
